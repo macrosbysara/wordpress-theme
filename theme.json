@@ -1,0 +1,166 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "40rem",
+			"wideSize": "70rem"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"palette": [
+				{
+					"name": "Primary",
+					"slug": "primary",
+					"color": "rgb(61, 28, 17)"
+				},
+				{
+					"name": "Gray",
+					"slug": "gray",
+					"color": "rgb(90, 88, 92)"
+				},
+				{
+					"name": "Primary Light",
+					"slug": "primary-light",
+					"color": "rgb(116, 60, 24)"
+				},
+				{
+					"name": "Secondary",
+					"slug": "secondary",
+					"color": "rgb(140, 101, 72)"
+				},
+				{
+					"name": "Secondary Light",
+					"slug": "secondary-light",
+					"color": "rgb(210, 189, 182)"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "rgb(255, 255, 255)"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "rgb(0, 0, 0)"
+				},
+				{
+					"name": "Drop Shadow",
+					"slug": "drop-shadow",
+					"color": "rgba(0, 0, 0, 0.35)"
+				}
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"fontWeight": true,
+			"customFontSize": false,
+			"defaultFontSizes": false,
+			"fontFamilies": [
+				{
+					"name": "Mulish (Sans)",
+					"slug": "mulish",
+					"fontFamily": "Mulish, Helvetica, sans-serif",
+					"fontFace": [
+						{
+							"fontStyle": "normal",
+							"fontWeight": "400 700",
+							"fontFamily": "Mulish, Helvetica, sans-serif",
+							"src": "[file:./src/fonts/Mulish/Mulish-VariableFont_wght.ttf]"
+						}
+					]
+				},
+				{
+					"name": "Cormorant (Serif)",
+					"slug": "cormorant",
+					"fontFamily": "'Cormorant', Garamond, serif",
+					"fontFace": [
+						{
+							"fontStyle": "normal",
+							"fontWeight": "400 700",
+							"fontFamily": "'Cormorant', Garamond, serif",
+							"src": "[file:./src/fonts/Cormorant/Cormorant-VariableFont_wght.ttf]"
+						}
+					]
+				}
+			],
+			"fontSizes": [
+				{
+					"name": "Small",
+					"size": ".8rem",
+					"slug": "sm"
+				},
+				{
+					"name": "Normal",
+					"size": "1rem",
+					"slug": "normal"
+				},
+				{
+					"name": "Medium",
+					"size": "1.2rem",
+					"slug": "md"
+				},
+				{
+					"name": "Large",
+					"size": "1.44rem",
+					"slug": "lg"
+				},
+				{
+					"name": "Extra Large",
+					"size": "1.728rem",
+					"slug": "xl"
+				},
+				{
+					"name": "2XL",
+					"size": "2.074rem",
+					"slug": "2xl"
+				},
+				{
+					"name": "3XL",
+					"size": "2.488rem",
+					"slug": "3xl"
+				},
+				{
+					"name": "4XL",
+					"size": "2.986rem",
+					"slug": "4xl"
+				}
+			]
+		},
+		"useRootPaddingAwareAlignments": false,
+		"blocks": {}
+	},
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mulish)",
+			"fontSize": "var(--wp--preset--font-size--normal)",
+			"fontWeight": "400",
+			"fontStyle": "normal"
+		},
+		"color": {
+			"text": "var(--wp--preset--color--primary)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--cormorant)",
+					"fontSize": "var(--wp--preset--font-size--lg)",
+					"fontWeight": "700",
+					"fontStyle": "normal"
+				},
+				"color": {
+					"text": "var(--wp--preset--color--primary)"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--white)"
+				}
+			}
+		}
+	}
+}
