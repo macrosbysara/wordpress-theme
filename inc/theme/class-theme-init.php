@@ -20,13 +20,15 @@ class Theme_Init {
 	public function __construct() {
 		$this->load_files();
 		add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
 	}
 
 	/**
 	 * Load Required Files
 	 */
 	private function load_files() {
-		$base_path   = get_template_directory() . '/inc';
+		$base_path   = get_stylesheet_directory() . '/inc';
 		$theme_files = array(
 			'gutenberg-handler' => 'Gutenberg_Handler',
 			'cpt-handler'       => 'CPT_Handler',
@@ -39,5 +41,31 @@ class Theme_Init {
 
 			}
 		}
+	}
+
+	/**
+	 * Enqueue scripts and styles.
+	 */
+	public function enqueue_scripts(): void {
+		$global_assets = require_once get_stylesheet_directory() . '/build/index.asset.php';
+
+		wp_enqueue_script(
+			'my-theme-script',
+			get_stylesheet_directory_uri() . '/build/index.js',
+			$global_assets['dependencies'],
+			$global_assets['version'],
+			array( 'strategy' => 'defer' )
+		);
+	}
+
+	/**
+	 * Handle speculative loading
+	 *
+	 * @param array $config the configuration array
+	 * @return array
+	 */
+	public function handle_speculative_loading( array $config ): array {
+		$config['eagerness'] = 'moderate';
+		return $config;
 	}
 }
