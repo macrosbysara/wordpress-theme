@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.1.0 - [August 24, 2024]
+## 1.1.1 - [August 24, 2024]
+
+-   Fixed: Footer Copyright works correctly again.
+
+## 1.1.0
 
 -   Added: Global CSS to SCSS bundle
 -   Fixed: Speculative loading filter now handles logged-in users appropriately.

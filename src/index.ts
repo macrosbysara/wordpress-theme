@@ -10,7 +10,6 @@ function myCopyright( brandName: string, builder: string, site: string ): void {
 	const thisYear = new Date().getFullYear();
 	const builderLink = `<a href="https://${ site }" target ="_blank" style="text-decoration:underline;">${ builder }</a>`;
 	copyright.innerHTML = `<p>&copy; ${ thisYear } ${ brandName } All Rights Reserved.<br/>Site built by ${ builderLink }</p>`;
-	copyright.innerHTML = builderLink;
 }
 window.addEventListener( 'DOMContentLoaded', () => {
 	myCopyright( 'Sara Roelke', 'K.J. Roelke', 'www.kjroelke.online' );
