@@ -2,12 +2,13 @@
 
 ## 1.1.0 - [August 24, 2024]
 
--   Add Global CSS to SCSS bundle
+-   Added: Global CSS to SCSS bundle
+-   Fixed: Speculative loading filter now handles logged-in users appropriately.
 
 ### 1.0.1
 
--   Fix stylesheet path errors
--   Add more-intense speculative loading
+-   Added: more-intense speculative loading
+-   Fixed: stylesheet path errors
 
 ### 1.0.0
 
