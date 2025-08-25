@@ -1,0 +1,36 @@
+{
+	"name": "macros-by-sara-wp-theme",
+	"version": "1.0.0",
+	"description": "A WordPress theme for Macros By Sara",
+	"homepage": "https://github.com/macrosbysara/wordpress-theme#readme",
+	"bugs": {
+		"url": "https://github.com/macrosbysara/wordpress-theme/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/macrosbysara/wordpress-theme.git"
+	},
+	"license": "GPL-2.0-or-later",
+	"author": "KJ Roelke",
+	"prettier": "@wordpress/prettier-config",
+	"main": "src/index.ts",
+	"scripts": {
+		"build": "wp-scripts build",
+		"check-engines": "wp-scripts check-engines",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start"
+	},
+	"files": [
+		"inc/",
+		"style.css",
+		"readme.md",
+		"screenshot.css",
+		"build/",
+		"assets/fonts/",
+		"functions.php",
+		"theme.json"
+	],
+	"devDependencies": {
+		"@wordpress/scripts": "^30.22.0"
+	}
+}
