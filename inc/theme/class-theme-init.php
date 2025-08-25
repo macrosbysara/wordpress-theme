@@ -50,11 +50,17 @@ class Theme_Init {
 		$global_assets = require_once get_stylesheet_directory() . '/build/index.asset.php';
 
 		wp_enqueue_script(
-			'my-theme-script',
+			'global',
 			get_stylesheet_directory_uri() . '/build/index.js',
 			$global_assets['dependencies'],
 			$global_assets['version'],
 			array( 'strategy' => 'defer' )
+		);
+		wp_enqueue_style(
+			'global',
+			get_stylesheet_directory_uri() . '/build/index.css',
+			$global_assets['dependencies'],
+			$global_assets['version'],
 		);
 	}
 

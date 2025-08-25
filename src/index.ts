@@ -1,3 +1,4 @@
+import './styles/main.scss';
 /**
  * Create copyright text with a dynamic date and URL campaign builder for GA inside a div with the ID of 'copyright.'
  */
