@@ -5,7 +5,17 @@
 		"appearanceTools": true,
 		"layout": {
 			"contentSize": "40rem",
-			"wideSize": "70rem"
+			"wideSize": "82.5rem"
+		},
+		"spacing": {
+			"blockGap": true,
+			"spacingScale": {
+				"mediumStep": 1.5,
+				"increment": 0.25,
+				"steps": 7,
+				"operator": "*",
+				"unit": "rem"
+			}
 		},
 		"color": {
 			"defaultPalette": false,
@@ -69,7 +79,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "400 700",
 							"fontFamily": "Mulish, Helvetica, sans-serif",
-							"src": "[file:./src/fonts/Mulish/Mulish-VariableFont_wght.ttf]"
+							"src": "[file:./assets/fonts/Mulish/Mulish-VariableFont_wght.ttf]"
 						}
 					]
 				},
@@ -82,7 +92,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "400 700",
 							"fontFamily": "'Cormorant', Garamond, serif",
-							"src": "[file:./src/fonts/Cormorant/Cormorant-VariableFont_wght.ttf]"
+							"src": "[file:./assets/fonts/Cormorant/Cormorant-VariableFont_wght.ttf]"
 						}
 					]
 				}
@@ -91,49 +101,96 @@
 				{
 					"name": "Small",
 					"size": ".8rem",
-					"slug": "sm"
+					"slug": "sm",
+					"fluid": {
+						"min": ".8rem",
+						"max": "1rem"
+					}
 				},
 				{
 					"name": "Normal",
 					"size": "1rem",
-					"slug": "normal"
+					"slug": "normal",
+					"fluid": {
+						"min": "1rem",
+						"max": "1.25rem"
+					}
 				},
 				{
 					"name": "Medium",
 					"size": "1.2rem",
-					"slug": "md"
+					"slug": "md",
+					"fluid": {
+						"min": "1.2rem",
+						"max": "1.5rem"
+					}
 				},
 				{
 					"name": "Large",
 					"size": "1.44rem",
-					"slug": "lg"
+					"slug": "lg",
+					"fluid": {
+						"min": "1.44rem",
+						"max": "1.88rem"
+					}
 				},
 				{
 					"name": "Extra Large",
 					"size": "1.728rem",
-					"slug": "xl"
+					"slug": "xl",
+					"fluid": {
+						"min": "1.728rem",
+						"max": "2.16rem"
+					}
 				},
 				{
 					"name": "2XL",
 					"size": "2.074rem",
-					"slug": "2xl"
+					"slug": "2xl",
+					"fluid": {
+						"min": "2.074rem",
+						"max": "2.592rem"
+					}
 				},
 				{
 					"name": "3XL",
 					"size": "2.488rem",
-					"slug": "3xl"
+					"slug": "3xl",
+					"fluid": {
+						"min": "2.488rem",
+						"max": "3.11rem"
+					}
 				},
 				{
 					"name": "4XL",
 					"size": "2.986rem",
-					"slug": "4xl"
+					"slug": "4xl",
+					"fluid": {
+						"min": "2.986rem",
+						"max": "3.73rem"
+					}
 				}
 			]
 		},
-		"useRootPaddingAwareAlignments": false,
+		"useRootPaddingAwareAlignments": true,
 		"blocks": {}
 	},
 	"styles": {
+		"spacing": {
+			"margin": {
+				"bottom": "0",
+				"left": "0",
+				"right": "0",
+				"top": "0"
+			},
+			"padding": {
+				"bottom": "0",
+				"left": "1.5rem",
+				"right": "1.5rem",
+				"top": "0"
+			},
+			"blockGap": "var:preset|spacing|base"
+		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--mulish)",
 			"fontSize": "var(--wp--preset--font-size--normal)",
