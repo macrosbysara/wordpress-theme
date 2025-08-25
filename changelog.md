@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.2.1 - [August 25, 2024]
+## 1.3.0 - [August 25, 2024]
+
+-   Added: Theme now supports "Guides" CPT
+
+## 1.2.1
 
 -   Fixed: X Theme CSS overrides now take priority
 
