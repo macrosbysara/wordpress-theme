@@ -13,8 +13,8 @@
 		}
 	],
 	"scripts": {
-		"phpcs": "phpcs macros-by-sara/ --extensions=php --ignore=macros-by-sara/dist/",
-		"phpcbf": "phpcbf macros-by-sara/ --extensions=php --ignore=macros-by-sara/dist/"
+		"phpcs": "phpcs functions.php inc/ --extensions=php --ignore=./build/",
+		"phpcbf": "phpcbf functions.php inc/ --extensions=php --ignore=./build/"
 	},
 	"config": {
 		"allow-plugins": {
