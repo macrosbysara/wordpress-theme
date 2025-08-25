@@ -1,7 +1,9 @@
-.x-header-landmark {
-	display: none;
-}
+:root {
+	.x-header-landmark {
+		display: none;
+	}
 
-.x-colophon.bottom {
-	background: var(--color-primary);
+	.x-colophon.bottom {
+		background: var(--color-primary);
+	}
 }
