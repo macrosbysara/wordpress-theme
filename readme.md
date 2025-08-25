@@ -23,4 +23,4 @@ This theme is licensed under the GNU General Public License v2.0 or later. See [
 
 ---
 
-For questions or support, contact macrosbysara.com.
+For questions or support, contact developer at macrosbysara.com.

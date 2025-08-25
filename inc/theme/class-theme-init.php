@@ -50,22 +50,31 @@ class Theme_Init {
 		$global_assets = require_once get_stylesheet_directory() . '/build/index.asset.php';
 
 		wp_enqueue_script(
-			'my-theme-script',
+			'global',
 			get_stylesheet_directory_uri() . '/build/index.js',
 			$global_assets['dependencies'],
 			$global_assets['version'],
 			array( 'strategy' => 'defer' )
+		);
+		wp_enqueue_style(
+			'global',
+			get_stylesheet_directory_uri() . '/build/index.css',
+			$global_assets['dependencies'],
+			$global_assets['version'],
 		);
 	}
 
 	/**
 	 * Handle speculative loading
 	 *
-	 * @param array $config the configuration array
-	 * @return array
+	 * @param ?array $config the configuration array. Null if user is logged-in.
+	 * @return ?array The new config file, or null
 	 */
-	public function handle_speculative_loading( array $config ): array {
-		$config['eagerness'] = 'moderate';
-		return $config;
+	public function handle_speculative_loading(  $config ) {
+		if ( is_array( $config ) ) {
+            $config['mode']      = 'auto';
+            $config['eagerness'] = 'moderate';
+        }
+        return $config;
 	}
 }
