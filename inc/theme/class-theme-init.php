@@ -31,12 +31,25 @@ class Theme_Init {
 		$base_path   = get_stylesheet_directory() . '/inc';
 		$theme_files = array(
 			'gutenberg-handler' => 'Gutenberg_Handler',
-			'cpt-handler'       => 'CPT_Handler',
 		);
 		foreach ( $theme_files as $file => $class ) {
 			require_once $base_path . "/theme/class-{$file}.php";
 			if ( $class ) {
 				$class = __NAMESPACE__ . "\\{$class}";
+				new $class();
+
+			}
+		}
+		$plugin_files = array(
+			'acf-handler' => array(
+				'class' => 'ACF_Handler',
+				'dir'   => 'acf',
+			),
+		);
+		foreach ( $plugin_files as $file => $data ) {
+			require_once $base_path . "/plugins/{$data['dir']}/class-{$file}.php";
+			if ( $data['class'] ) {
+				$class = __NAMESPACE__ . "\\{$data['class']}";
 				new $class();
 
 			}

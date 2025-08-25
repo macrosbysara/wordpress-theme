@@ -1,0 +1,212 @@
+{
+    "key": "group_6683557426e11",
+    "title": "Postpartum Recipes",
+    "fields": [
+        {
+            "key": "field_668355c74c11d",
+            "label": "Last Received",
+            "name": "last_received",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 0
+        },
+        {
+            "key": "field_6689aa74fa07e",
+            "label": "Post Type",
+            "name": "post_type",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Is this a recipe or a restaurant?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "taxonomy": "recipe-type",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "field_type": "radio",
+            "allow_null": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_668355742f9a9",
+            "label": "Visibility",
+            "name": "visibility",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6689aa74fa07e",
+                        "operator": "<",
+                        "value": "96"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "choices": {
+                "public": "Public",
+                "private": "Not Public"
+            },
+            "default_value": "public",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66c64cba74252",
+            "label": "Recipe Link",
+            "name": "recipe_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_668355742f9a9",
+                        "operator": "==",
+                        "value": "public"
+                    },
+                    {
+                        "field": "field_6689aa74fa07e",
+                        "operator": "==",
+                        "value": "95"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_6689a9e1b61ed",
+            "label": "Recipe Meta",
+            "name": "recipe_meta",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_668355742f9a9",
+                        "operator": "==",
+                        "value": "private"
+                    },
+                    {
+                        "field": "field_6689aa74fa07e",
+                        "operator": "<",
+                        "value": "96"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6689aa26b61ee",
+                    "label": "Servings",
+                    "name": "servings",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 1,
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6689aa31b61ef",
+                    "label": "Cook Time",
+                    "name": "cook_time",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 1,
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pregnancy-recipe"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "modified": 1756125732
+}
