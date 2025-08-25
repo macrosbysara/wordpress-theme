@@ -67,11 +67,14 @@ class Theme_Init {
 	/**
 	 * Handle speculative loading
 	 *
-	 * @param array $config the configuration array
-	 * @return array
+	 * @param ?array $config the configuration array. Null if user is logged-in.
+	 * @return ?array The new config file, or null
 	 */
-	public function handle_speculative_loading( array $config ): array {
-		$config['eagerness'] = 'moderate';
-		return $config;
+	public function handle_speculative_loading(  $config ) {
+		if ( is_array( $config ) ) {
+            $config['mode']      = 'auto';
+            $config['eagerness'] = 'moderate';
+        }
+        return $config;
 	}
 }
