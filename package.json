@@ -26,7 +26,7 @@
 		"readme.md",
 		"screenshot.png",
 		"build/",
-		"assets/fonts/",
+		"assets/",
 		"functions.php",
 		"theme.json"
 	],
