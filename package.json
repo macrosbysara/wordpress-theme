@@ -1,6 +1,6 @@
 {
 	"name": "macros-by-sara-wp-theme",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A WordPress theme for Macros By Sara",
 	"homepage": "https://github.com/macrosbysara/wordpress-theme#readme",
 	"bugs": {
@@ -31,6 +31,6 @@
 		"theme.json"
 	],
 	"devDependencies": {
-		"@wordpress/scripts": "^30.22.0"
+		"@wordpress/scripts": "^30.26.0"
 	}
 }
