@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 - [August 25, 2024]
+
+-   Chore: Update packages
+
 ## 1.3.0 - [August 25, 2024]
 
 -   Added: Theme now supports "Guides" CPT
