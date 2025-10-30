@@ -1,3 +1,4 @@
+name: Build & Bundle
 on:
   push:
     branches:
