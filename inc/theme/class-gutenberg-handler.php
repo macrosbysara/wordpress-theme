@@ -25,7 +25,12 @@ class Gutenberg_Handler {
 	 * Add theme supports for Gutenberg features
 	 */
 	public function theme_supports() {
-		$opt_in_features = array( 'align-wide', 'disable-custom-colors', 'responsive-embeds', 'disable-custom-gradients', 'disable-custom-font-sizes' );
+		$opt_in_features = array(
+			'disable-custom-colors',
+			'responsive-embeds',
+			'disable-custom-gradients',
+			'disable-custom-font-sizes',
+		);
 
 		foreach ( $opt_in_features as $feature ) {
 			add_theme_support( $feature );

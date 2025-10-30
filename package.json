@@ -1,6 +1,6 @@
 {
 	"name": "macros-by-sara-wp-theme",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "A WordPress theme for Macros By Sara",
 	"homepage": "https://github.com/macrosbysara/wordpress-theme#readme",
 	"bugs": {
@@ -18,6 +18,8 @@
 		"build": "wp-scripts build",
 		"check-engines": "wp-scripts check-engines",
 		"packages-update": "wp-scripts packages-update",
+		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix",
+		"lint:js": "npx eslint --fix",
 		"start": "wp-scripts start"
 	},
 	"files": [
@@ -31,6 +33,17 @@
 		"theme.json"
 	],
 	"devDependencies": {
-		"@wordpress/scripts": "^30.26.0"
+		"@eslint/compat": "^1.4.1",
+		"@eslint/eslintrc": "^3.3.1",
+		"@wordpress/scripts": "^30.27.0",
+		"eslint": "^9.38.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"globals": "^16.4.0",
+		"stylelint": "^16.25.0",
+		"stylelint-config-standard-scss": "^16.0.0",
+		"stylelint-scss": "^6.12.1",
+		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
