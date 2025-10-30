@@ -1,12 +1,14 @@
 .wpcf7 * {
 	color: white;
 }
+
 .wpcf7 input,
 .wpcf7 select {
 	color: var(--color-primary);
 	border-radius: 10px;
 	border: 2px solid var(--color-primary);
 }
+
 .wpcf7 input.wpcf7-submit {
 	border: 2px solid var(--color-primary);
 	border-radius: 100em;
@@ -17,10 +19,11 @@
 	padding: 0.575em 0.85em;
 	line-height: initial;
 }
+
 .wpcf7 input.wpcf7-submit:hover {
 	background-color: white;
 	transform: translateY(-4px);
-	box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.35);
+	box-shadow: 2px 4px 10px 2px rgb(0 0 0 / 35%);
 	transition: all 0.2s ease;
 	color: var(--color-primary);
 }

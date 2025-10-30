@@ -2,6 +2,10 @@
 
 A custom WordPress theme for Macros by Sara, designed for performance, accessibility, and modern block-based editing.
 
+## Changelog
+
+See [changelog.md](./changelog.md) for release notes and version history.
+
 ## Features
 
 -   Modern CSS and JS build process
@@ -12,10 +16,6 @@ A custom WordPress theme for Macros by Sara, designed for performance, accessibi
 -   Source files are in the `src/` directory.
 -   Built assets are output to the `build/` directory.
 -   Customize theme settings in `theme.json`.
-
-## Changelog
-
-See [changelog.md](./changelog.md) for release notes and version history.
 
 ## License
 
