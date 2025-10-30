@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.2 - [October 29, 2025]
+
+-   Chore: Add lints and configs
+-   Chore: Update packages
+
 ## 1.3.1 - [August 25, 2024]
 
 -   Chore: Update packages
