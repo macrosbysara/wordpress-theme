@@ -18,4 +18,5 @@ jobs:
         uses: ./.github/workflows/ssh-test.yml
         with:
             REMOTE: staging6.macrosbysara.com
+            flags: "-azvr --delete"
         secrets: inherit
