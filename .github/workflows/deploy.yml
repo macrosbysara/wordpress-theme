@@ -18,5 +18,6 @@ jobs:
         uses: ./.github/workflows/ssh-test.yml
         with:
             REMOTE: staging6.macrosbysara.com
+            theme_name: "macros-by-sara-theme"
             flags: "-azvr --delete"
         secrets: inherit

@@ -35,7 +35,14 @@
 		"editor.useTabStops": true,
 		"prettier.useTabs": false
 	},
-	"cSpell.words": [ "azvr", "cpts", "Linktree", "macrosbysara", "wpcf" ],
+	"cSpell.words": [
+		"alignfull",
+		"azvr",
+		"cpts",
+		"Linktree",
+		"macrosbysara",
+		"wpcf"
+	],
 	"css.format.spaceAroundSelectorSeparator": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always",
