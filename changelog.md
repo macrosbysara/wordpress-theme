@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2-beta - [November 1, 2025]
+
+-   Test deploy
+
 ## 1.3.2 - [October 29, 2025]
 
 -   Chore: Add lints and configs
