@@ -30,6 +30,7 @@
 		"build/",
 		"assets/",
 		"functions.php",
+		"index.php",
 		"theme.json"
 	],
 	"devDependencies": {

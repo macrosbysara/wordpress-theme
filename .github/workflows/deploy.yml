@@ -11,7 +11,7 @@ jobs:
     deploy-prod:
         name: Deploy to Production
         if: github.ref == 'refs/heads/main'
-        uses: ./.github/workflows/ssh-test.yml
+        uses: macrosbysara/shared-github-actions/.github/workflows/deploy-theme.yml@main
         with:
             REMOTE: # Remote folder to deploy to
         secrets: inherit
@@ -19,9 +19,9 @@ jobs:
     deploy-stg:
         name: Deploy to Staging
         if: github.ref == 'refs/heads/stg'
-        uses: ./.github/workflows/ssh-test.yml
+        uses: macrosbysara/shared-github-actions/.github/workflows/deploy-theme.yml@main
         with:
             REMOTE: staging6.macrosbysara.com
-            theme_name: "macros-by-sara-theme"
+            theme_name: "macros-by-sara"
             flags: "-azvr --delete"
         secrets: inherit
