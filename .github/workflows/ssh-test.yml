@@ -64,25 +64,12 @@ jobs:
       #     name: ${{ inputs.theme_name }}
       #     path: ${{ inputs.theme_name }}
 
-      - name: Debug SSH key secret
-        run: |
-          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
-            echo "SSH_PRIVATE_KEY is empty"
-            exit 1
-          else
-            echo "SSH_PRIVATE_KEY is set"
-            head -n 2 <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-          fi
-
       - name: Configure SSH key
         run: |
-          set -x
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/gha-sg-mbs
           chmod 600 ~/.ssh/gha-sg-mbs
-          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-          ls -l ~/.ssh
-          cat ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Deploy theme via rsync
         run: |
