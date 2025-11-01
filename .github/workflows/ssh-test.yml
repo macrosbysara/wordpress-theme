@@ -76,6 +76,7 @@ jobs:
         run: |
           echo "Deploying theme directory to ${{ inputs.REMOTE }}"
           RSYNC_OPTS="${{ inputs.flags }}"
-          rsync $RSYNC_OPTS -e "ssh -i ~/.ssh/gha-sg-mbs -p ${{ secrets.REMOTE_PORT }}" \
-            "${{ inputs.theme_name }}/" \
-            "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:www/${{ inputs.REMOTE }}/public_html/wp-content/themes/${{ inputs.theme_name }}/"
+          rsync --progress $RSYNC_OPTS \
+          -e "ssh -i ~/.ssh/gha-sg-mbs -p ${{ secrets.REMOTE_PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+          "${{ inputs.theme_name }}/" \
+          "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:www/${{ inputs.REMOTE }}/public_html/wp-content/themes/${{ inputs.theme_name }}/"
