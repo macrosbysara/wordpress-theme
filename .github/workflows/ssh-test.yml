@@ -1,83 +1,81 @@
 name: SSH Test
 on:
-    workflow_call:
-        inputs:
-            REMOTE:
-                type: string
-                description: "The remote folder to deploy to."
-                required: true
-            asset_folder_name:
-                type: string
-                default: "build"
-                description: "The name of the folder that gets generated in the build step. Default: build"
-                required: false
-            theme_name:
-                type: string
-                default: "macros-by-sara"
-                description: "The name of the theme to deploy. Default: macros-by-sara-theme"
-                required: false
-            flags:
-                type: string
-                default: "-azr --delete"
-                description: "Optional flags to pass to the rsync command during deployment. Default: -azr --delete"
-                required: false
+  workflow_call:
+    inputs:
+      REMOTE:
+        type: string
+        description: "The remote folder to deploy to."
+        required: true
+      asset_folder_name:
+        type: string
+        default: "build"
+        description: "The name of the folder that gets generated in the build step. Default: build"
+        required: false
+      theme_name:
+        type: string
+        default: "macros-by-sara"
+        description: "The name of the theme to deploy. Default: macros-by-sara-theme"
+        required: false
+      flags:
+        type: string
+        default: "-azr --delete"
+        description: "Optional flags to pass to the rsync command during deployment. Default: -azr --delete"
+        required: false
 
 jobs:
-    build-and-bundle:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v5
+  build-and-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Run build
-              run: npm run build
+      - name: Run build
+        run: npm run build
 
-            - name: Read files array from package.json
-              id: files
-              run: |
-                  FILES=$(jq -r '.files | join(" ")' package.json)
-                  echo "files=$FILES" >> $GITHUB_OUTPUT
+      - name: Read files array from package.json
+        id: files
+        run: |
+          FILES=$(jq -r '.files | join(" ")' package.json)
+          echo "files=$FILES" >> $GITHUB_OUTPUT
 
-            - name: Bundle theme
-              run: |
-                  mkdir ${{inputs.theme_name}}
-                  cp -r ${{ steps.files.outputs.files }} ${{inputs.theme_name}}/
+      - name: Bundle theme
+        run: |
+          mkdir "${{ inputs.theme_name }}"
+          cp -r ${{ steps.files.outputs.files }} "${{ inputs.theme_name }}/"
 
-            - name: Upload theme bundle artifact
-              uses: actions/upload-artifact@v5
-              with:
-                  name: ${{inputs.theme_name}}
-                  path: ${{inputs.theme_name}}/
-    deploy:
-        runs-on: ubuntu-latest
-        needs: build-and-bundle
-        steps:
-            - name: Download theme bundle artifact
-              uses: actions/download-artifact@v6
-              with:
-                  name: ${{inputs.theme_name}}
-                  path: ${{inputs.theme_name}}
+      - name: Upload theme bundle artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ inputs.theme_name }}
+          path: ${{ inputs.theme_name }}/
 
-            - name: Start ssh-agent and add private key
-              uses: appleboy/ssh-action@v1.2.2
-              with:
-                  host: ${{ secrets.REMOTE_HOST }}
-                  username: ${{ secrets.REMOTE_USER }}
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
-                  port: ${{ secrets.REMOTE_PORT }}
-                  script: |
-                      echo "SSH connection established."
-                      echo "Deploying theme directory to ${{inputs.REMOTE}}"
-                      RSYNC_OPTS="${{ inputs.flags }}"
-                      rsync $RSYNC_OPTS -e "ssh -p ${REMOTE_PORT}" "${{inputs.theme_name}}" "${REMOTE_USER}@${REMOTE_HOST}:www/${{inputs.REMOTE}}/public_html/wp-content/themes/${{inputs.theme_name}}/"
-                      exit 0
-              env:
-                  REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-                  REMOTE_USER: ${{ secrets.REMOTE_USER }}
-                  REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-bundle
+    steps:
+      - name: Download theme bundle artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: ${{ inputs.theme_name }}
+          path: ${{ inputs.theme_name }}
+
+      - name: Configure SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy theme via rsync
+        run: |
+          echo "Deploying theme directory to ${{ inputs.REMOTE }}"
+          RSYNC_OPTS="${{ inputs.flags }}"
+          rsync $RSYNC_OPTS -e "ssh -i ~/.ssh/id_rsa -p ${{ secrets.REMOTE_PORT }}" \
+            "${{ inputs.theme_name }}/" \
+            "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:www/${{ inputs.REMOTE }}/public_html/wp-content/themes/${{ inputs.theme_name }}/"
