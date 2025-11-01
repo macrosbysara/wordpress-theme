@@ -68,14 +68,14 @@ jobs:
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/gha-sg-mbs
+          chmod 600 ~/.ssh/gha-sg-mbs
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy theme via rsync
         run: |
           echo "Deploying theme directory to ${{ inputs.REMOTE }}"
           RSYNC_OPTS="${{ inputs.flags }}"
-          rsync $RSYNC_OPTS -e "ssh -i ~/.ssh/id_rsa -p ${{ secrets.REMOTE_PORT }}" \
+          rsync $RSYNC_OPTS -e "ssh -i ~/.ssh/gha-sg-mbs -p ${{ secrets.REMOTE_PORT }}" \
             "${{ inputs.theme_name }}/" \
             "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:www/${{ inputs.REMOTE }}/public_html/wp-content/themes/${{ inputs.theme_name }}/"
