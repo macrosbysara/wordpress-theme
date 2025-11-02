@@ -19,7 +19,7 @@ class Theme_Init {
 	 */
 	public function __construct() {
 		$this->load_files();
-		add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
+		// add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
 	}
@@ -60,21 +60,38 @@ class Theme_Init {
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts(): void {
-		$global_assets = require_once get_stylesheet_directory() . '/build/index.asset.php';
+		$files = array(
+			'bootstrap' => array(
+				'js'  => '/vendors/bootstrap',
+				'css' => '/vendors/bootstrap',
+			),
+			'global'    => array(
+				'js'  => 'global',
+				'css' => 'global',
+			),
+		);
+		foreach ( $files as $handle => $paths ) {
+			$assets = require_once get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
 
-		wp_enqueue_script(
-			'global',
-			get_stylesheet_directory_uri() . '/build/index.js',
-			$global_assets['dependencies'],
-			$global_assets['version'],
-			array( 'strategy' => 'defer' )
-		);
-		wp_enqueue_style(
-			'global',
-			get_stylesheet_directory_uri() . '/build/index.css',
-			$global_assets['dependencies'],
-			$global_assets['version'],
-		);
+			$deps = $assets['dependencies'];
+			if ( 'bootstrap' !== $handle ) {
+				// Ensure bootstrap JS loads after jQuery
+				$deps = array_merge( $deps, array( 'bootstrap' ) );
+			}
+			wp_enqueue_script(
+				$handle,
+				get_stylesheet_directory_uri() . '/build' . $paths['js'] . '.js',
+				$deps,
+				$assets['version'],
+				array( 'strategy' => 'defer' )
+			);
+			wp_enqueue_style(
+				$handle,
+				get_stylesheet_directory_uri() . '/build' . $paths['css'] . '.css',
+				$deps,
+				$assets['version'],
+			);
+		}
 	}
 
 	/**

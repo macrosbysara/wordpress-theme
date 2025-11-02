@@ -1,5 +1,41 @@
 @use "../abstracts/fluid-type-utils" as fluid-type;
 
+@font-face {
+	font-family: Mulish;
+	src: url("assets/fonts/Mulish/Mulish-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: 100 900; /* Variable font weight range */
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Mulish;
+	src: url("assets/fonts/Mulish/Mulish-Italic-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Cormorant;
+	src: url("assets/fonts/Cormorant/Cormorant-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: 100 900; /* Variable font weight range */
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Cormorant;
+	src: url("assets/fonts/Cormorant/Cormorant-Italic-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
 :root {
 	@include fluid-type.generate-type-scale;
 	@include fluid-type.generate-type-scale(
@@ -30,9 +66,11 @@ $headings: (
 * Reset Headings and utils to use WP sizes instead of bootstrap's
 */
 @each $heading, $slug in $headings {
-	h#{$heading},
+	h#{$heading} {
+		font-size: var(--wp--preset--font-size--#{$slug});
+	}
 	.h#{$heading} {
-		text-wrap: balance;
+		text-wrap: pretty;
 		font-size: var(--wp--preset--font-size--#{$slug});
 	}
 	.fs-#{$heading} {

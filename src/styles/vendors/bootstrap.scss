@@ -12,10 +12,12 @@
 * Also, you can add custom colors with the sass `map` below
 */
 
-$primary: v.$color-purple;
-$secondary: #6c757d;
+$primary: rgb(61 28 17);
+$secondary: rgb(140 101 72);
 $custom-colors: (
-	"purple": v.$color-purple,
+	"primary-light": rgb(116 60 24),
+	"secondary-light": rgb(210 189 182),
+	"gray": rgb(90 88 92),
 	"black": black,
 	"white": white,
 );
