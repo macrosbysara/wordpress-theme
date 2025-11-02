@@ -1,8 +1,8 @@
 # Changelog
 
-## 1.3.2-beta - [November 1, 2025]
+## 2.0.0 - [November 1, 2025]
 
--   Test deploy
+-   New Theme!
 
 ## 1.3.2 - [October 29, 2025]
 
