@@ -13,48 +13,73 @@ namespace MacrosBySara;
  * Class: Theme Init
  */
 class Theme_Init {
+	/**
+	 * Utils Loader
+	 *
+	 * @var Utils_Loader $loader
+	 */
+	private Utils_Loader $loader;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->load_files();
-		// add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
+		require_once get_stylesheet_directory() . '/inc/theme/class-utils-loader.php';
+		$this->loader = new Utils_Loader();
+		$this->loader->load_files();
+		$this->disable_discussion();
+		add_action( 'after_setup_theme', array( $this, 'configure_theme_support' ) );
+		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
 	}
 
-	/**
-	 * Load Required Files
-	 */
-	private function load_files() {
-		$base_path   = get_stylesheet_directory() . '/inc';
-		$theme_files = array(
-			'gutenberg-handler' => 'Gutenberg_Handler',
-		);
-		foreach ( $theme_files as $file => $class ) {
-			require_once $base_path . "/theme/class-{$file}.php";
-			if ( $class ) {
-				$class = __NAMESPACE__ . "\\{$class}";
-				new $class();
+	/** Remove comments, pings and trackbacks support from posts types. */
+	private function disable_discussion() {
+		// Close comments on the front-end
+		add_filter( 'comments_open', '__return_false', 20, 2 );
+		add_filter( 'pings_open', '__return_false', 20, 2 );
 
-			}
-		}
-		$plugin_files = array(
-			'acf-handler' => array(
-				'class' => 'ACF_Handler',
-				'dir'   => 'acf',
-			),
-		);
-		foreach ( $plugin_files as $file => $data ) {
-			require_once $base_path . "/plugins/{$data['dir']}/class-{$file}.php";
-			if ( $data['class'] ) {
-				$class = __NAMESPACE__ . "\\{$data['class']}";
-				new $class();
+		// Hide existing comments.
+		add_filter( 'comments_array', '__return_empty_array', 10, 2 );
 
+		// Remove comments page in menu.
+		add_action(
+			'admin_menu',
+			function () {
+				remove_menu_page( 'edit-comments.php' );
 			}
-		}
+		);
+
+		// Remove comments links from admin bar.
+		add_action(
+			'init',
+			function () {
+				if ( is_admin_bar_showing() ) {
+					remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+				}
+			}
+		);
 	}
+
+	/** Registers Theme Supports */
+	public function configure_theme_support() {
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'title-tag' );
+
+		register_nav_menus(
+			array(
+				'primary_menu' => 'Primary Menu',
+				'footer_menu'  => 'Footer Menu',
+			)
+		);
+	}
+
+	/** Alter Post Types. */
+	public function alter_post_types() {
+		add_post_type_support( 'page', 'excerpt' );
+	}
+
 
 	/**
 	 * Enqueue scripts and styles.

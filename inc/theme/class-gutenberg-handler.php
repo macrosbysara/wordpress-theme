@@ -26,10 +26,7 @@ class Gutenberg_Handler {
 	 */
 	public function theme_supports() {
 		$opt_in_features = array(
-			'disable-custom-colors',
 			'responsive-embeds',
-			'disable-custom-gradients',
-			'disable-custom-font-sizes',
 		);
 
 		foreach ( $opt_in_features as $feature ) {

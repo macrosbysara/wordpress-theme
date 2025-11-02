@@ -56,7 +56,7 @@ $h6-font-size: $font-size-base * 1.2;
 
 /**
 * Display Type Scale
-* Major Third Typescale
+* Major Third Type scale
 * @see https://typescale.com
 */
 $display-font-sizes: (
@@ -168,18 +168,21 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 // Optional Bootstrap Modules (w/ Dependencies)
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/type";
+@import "bootstrap/scss/dropdown";
 
-// @import "bootstrap/scss/dropdown";
 // @import "bootstrap/scss/images";
 // @import "bootstrap/scss/tables";
-// @import "bootstrap/scss/forms";
+@import "bootstrap/scss/forms";
+
 // @import "bootstrap/scss/button-group";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar"; // Requires nav
-// @import "bootstrap/scss/card";
-// @import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/breadcrumb";
+
 // @import "bootstrap/scss/accordion";
-// @import "bootstrap/scss/pagination";
+@import "bootstrap/scss/pagination";
+
 // @import "bootstrap/scss/badge";
 // @import "bootstrap/scss/alert";
 // @import "bootstrap/scss/progress";
