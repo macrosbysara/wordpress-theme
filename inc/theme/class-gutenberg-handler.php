@@ -47,9 +47,15 @@ class Gutenberg_Handler {
 		$opt_in_features = array(
 			'responsive-embeds',
 		);
-
 		foreach ( $opt_in_features as $feature ) {
 			add_theme_support( $feature );
 		}
+
+		// $opt_out_features = array(
+		// 'core-block-patterns',
+		// );
+		// foreach ( $opt_out_features as $feature ) {
+		// remove_theme_support( $feature );
+		// }
 	}
 }

@@ -36,6 +36,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
 		"@eslint/eslintrc": "^3.3.1",
+		"@wordpress/data": "^10.34.0",
 		"eslint": "^9.38.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-import-resolver-typescript": "^4.4.4",
@@ -47,6 +48,7 @@
 		"webpack-remove-empty-scripts": "^1.1.1"
 	},
 	"dependencies": {
+		"@choctawnationofoklahoma/wp-flex-reverse-toggle": "^1.1.1",
 		"@wordpress/scripts": "^30.27.0",
 		"bootstrap": "^5.3.8",
 		"swiper": "^12.0.3"
