@@ -87,8 +87,8 @@ class Theme_Init {
 	public function enqueue_scripts(): void {
 		$files = array(
 			'bootstrap' => array(
-				'js'  => '/vendors/bootstrap',
-				'css' => '/vendors/bootstrap',
+				'js'  => 'vendors/bootstrap',
+				'css' => 'vendors/bootstrap',
 			),
 			'global'    => array(
 				'js'  => 'global',
@@ -105,14 +105,14 @@ class Theme_Init {
 			}
 			wp_enqueue_script(
 				$handle,
-				get_stylesheet_directory_uri() . '/build' . $paths['js'] . '.js',
+				get_stylesheet_directory_uri() . "/build/{$paths['js']}.js",
 				$deps,
 				$assets['version'],
 				array( 'strategy' => 'defer' )
 			);
 			wp_enqueue_style(
 				$handle,
-				get_stylesheet_directory_uri() . '/build' . $paths['css'] . '.css',
+				get_stylesheet_directory_uri() . "/build/{$paths['css']}.css",
 				$deps,
 				$assets['version'],
 			);

@@ -14,5 +14,3 @@ function myCopyright( brandName: string, builder: string, site: string ): void {
 window.addEventListener( 'DOMContentLoaded', () => {
 	myCopyright( 'Sara Roelke', 'K.J. Roelke', 'www.kjroelke.online' );
 } );
-
-alert('Hello from the child theme!');

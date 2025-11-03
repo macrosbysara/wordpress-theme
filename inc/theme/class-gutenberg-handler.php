@@ -18,7 +18,26 @@ class Gutenberg_Handler {
 	 * Constructor
 	 */
 	public function __construct() {
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+	}
+
+	/**
+	 * Enqueue the block editor assets that control the layout of the Block Editor.
+	 */
+	public function enqueue_block_assets() {
+		$files = array( 'editDefaultBlocks' );
+		foreach ( $files as $handle ) {
+			$assets = require_once get_stylesheet_directory() . "/build/admin/{$handle}.asset.php";
+
+			wp_enqueue_script(
+				$handle,
+				get_stylesheet_directory_uri() . "/build/admin/{$handle}.js",
+				$assets['dependencies'],
+				$assets['version'],
+				array( 'strategy' => 'defer' )
+			);
+		}
 	}
 
 	/**

@@ -5,7 +5,6 @@
  * @package ChoctawNation
  */
 
-
 use MacrosBySara\Navwalker;
 
 ?>
@@ -22,7 +21,7 @@ use MacrosBySara\Navwalker;
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-	<header class="d-flex text-bg-primary" id="site-header">
+	<header class="d-flex" id="site-header">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg py-0">
 				<a class="navbar-brand my-2 align-items-md-center" href="<?php echo esc_url( site_url() ); ?>" class="logo" aria-label="to Home Page">
