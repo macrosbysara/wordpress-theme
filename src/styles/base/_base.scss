@@ -1,13 +1,5 @@
 :root {
-	--color-primary: var(--wp--preset--color--primary, rgb(61 28 17));
-	--color-primary--light: var(
-		--wp--preset--color--primary-light,
-		rgb(116 60 24)
-	);
-	--color-secondary--light: var(
-		--wp--preset--color--secondary-light,
-		rgb(210 189 182)
-	);
-	--color-secondary: var(--wp--preset--color--secondary, rgb(140 101 72));
-	--color-grey--dark: var(--wp-preset--color--gray, rgb(90 88 92));
+	--btn-hover-box-shadow: 2px 4px 10px 2px rgb(0 0 0 / 35%);
+	--btn-hover-translate-y: -4px;
+	--btn-hover-translate-x: 0px;
 }

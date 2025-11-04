@@ -7,7 +7,7 @@
 	@each $property in $properties {
 		$new-list: list.append(
 			$new-list,
-			#{$property} var(--transition-standard),
+			#{$property} var(--wp--custom--transition--standard),
 			comma
 		);
 	}

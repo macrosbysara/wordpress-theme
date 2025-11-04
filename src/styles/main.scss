@@ -1,4 +1,10 @@
 @use "./base/base";
 @use "./base/utilities";
 @use "./base/typography";
+
+// Block Overrides
+@use "./block-overrides/button";
+@use "./block-overrides/post-excerpt";
+
+// Plugin Overrides
 @use "./plugin-overrides/contact-form-seven";

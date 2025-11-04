@@ -1,3 +1,6 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/functions" as fn;
+
 .wpcf7 {
 	* {
 		color: white;
@@ -16,19 +19,25 @@
 
 	input.wpcf7-submit {
 		border: 2px solid var(--wp--preset--color--primary);
-		border-radius: 100em;
+		border-radius: 50rem;
 		color: white;
 		background-color: var(--wp--preset--color--primary);
-		font-size: 1em;
+		font-size: var(--wp--preset--font-size--root);
 		text-transform: unset;
-		padding: 0.575em 0.85em;
+		padding: var(--wp--preset--spacing--base) var(--wp--preset--spacing--lg);
 		line-height: initial;
+		transition: fn.transition(
+			color,
+			background-color,
+			box-shadow,
+			translate
+		);
 
-		&:hover {
+		@include m.interaction {
 			background-color: white;
-			transform: translateY(-4px);
-			box-shadow: 2px 4px 10px 2px rgb(0 0 0 / 35%);
-			transition: all 0.2s ease;
+			box-shadow: var(--btn-hover-box-shadow);
+			translate: var(--btn-hover-translate-x) var(--btn-hover-translate-y);
+			transition: var(--wp--custom--transition--standard);
 			color: var(--wp--preset--color--primary);
 		}
 	}
@@ -38,5 +47,5 @@
 	color: var(--wp--preset--color--primary);
 	border-left: 5px solid var(--wp--preset--color--primary);
 	background-color: white;
-	font-size: 1.6rem;
+	font-size: var(--wp--preset--font-size--root);
 }
