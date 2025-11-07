@@ -5,11 +5,11 @@ import { FlexReverse } from './FlexReverse';
  *
  * @param namespace the namespace of the callback functions to run
  */
-export default function addFlexReverseToggle(namespace: string) {
+export default function addFlexReverseToggle( namespace: string ) {
 	try {
-		new FlexReverse(namespace);
-	} catch (error) {
-        // eslint-disable-next-line no-console
-		console.error(`Error initializing FlexReverse:`, error);
+		new FlexReverse( namespace );
+	} catch ( error ) {
+		// eslint-disable-next-line no-console
+		console.error( `Error initializing FlexReverse:`, error );
 	}
 }
