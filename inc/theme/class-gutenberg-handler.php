@@ -51,11 +51,11 @@ class Gutenberg_Handler {
 			add_theme_support( $feature );
 		}
 
-		// $opt_out_features = array(
-		// 'core-block-patterns',
-		// );
-		// foreach ( $opt_out_features as $feature ) {
-		// remove_theme_support( $feature );
-		// }
+		$opt_out_features = array(
+			'core-block-patterns',
+		);
+		foreach ( $opt_out_features as $feature ) {
+			remove_theme_support( $feature );
+		}
 	}
 }
