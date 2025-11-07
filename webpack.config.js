@@ -3,11 +3,6 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 const THEME_DIR = `./macros-by-sara`;
 
-/**
- * Array of strings modeled after folder names (e.g. 'about-choctaw'). Inside of these folders, an `index.ts` file is expected. If that's not what you want, consider editing the `addEntries` function below.
- *
- * **Be sure to import page scss in these files**
- */
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
 

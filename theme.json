@@ -363,6 +363,35 @@
 						"shadow": "20px 16px 0px var(--wp--preset--color--secondary-light)"
 					}
 				}
+			},
+			"core/details": {
+				"color": {
+					"background": "var:preset|color|secondary-light",
+					"text": "var:preset|color|white"
+				},
+				"border": {
+					"radius": "10px",
+					"width": "2px",
+					"color": "var:preset|color|primary-light"
+				},
+				"elements": {
+					"link": {
+						"color": { "text": "var:preset|color|white" }
+					}
+				},
+				"spacing": {
+					"padding": {
+						"top": "var:preset|spacing|sm",
+						"bottom": "var:preset|spacing|sm",
+						"left": "var:preset|spacing|sm",
+						"right": "var:preset|spacing|sm"
+					},
+					"blockGap": "var:preset|spacing|sm"
+				},
+				"typography": {
+					"fontFamily": "var:preset|font-family|headings",
+					"fontSize": "var:preset|font-size|md"
+				}
 			}
 		},
 		"elements": {
