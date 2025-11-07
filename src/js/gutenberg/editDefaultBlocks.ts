@@ -1,4 +1,4 @@
-import addFlexReverseToggle from './flex-reverse-toggle/addFlexReverseToggle'
+import addFlexReverseToggle from './flex-reverse-toggle/addFlexReverseToggle';
 import domReady from '@wordpress/dom-ready';
 
 function alterBlocks(): void {
