@@ -5,6 +5,7 @@
 // Block Overrides
 @use "./block-overrides/button";
 @use "./block-overrides/post-excerpt";
+@use "./block-overrides/query";
 
 // Plugin Overrides
 @use "./plugin-overrides/contact-form-seven";
