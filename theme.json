@@ -135,15 +135,6 @@
 					}
 				},
 				{
-					"slug": "normal",
-					"name": "Normal",
-					"size": "1rem",
-					"fluid": {
-						"min": "1rem",
-						"max": "1.25rem"
-					}
-				},
-				{
 					"slug": "sm",
 					"size": "1.2rem",
 					"name": "Small (H6)",
@@ -236,7 +227,7 @@
 		},
 		"typography": {
 			"fontFamily": "var:preset|font-family|body",
-			"fontSize": "var:preset|font-size|normal",
+			"fontSize": "var:preset|font-size|root",
 			"fontWeight": "400",
 			"fontStyle": "normal"
 		},
@@ -253,21 +244,33 @@
 						"bottom": "var:preset|spacing|sm",
 						"top": "var:preset|spacing|none"
 					}
+				},
+				"color": {
+					"text": "var:preset|color|primary"
 				}
 			},
 			"core/list": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|body",
 					"fontSize": "var:preset|font-size|root"
+				},
+				"color": {
+					"text": "var:preset|color|primary"
 				}
 			},
 			"core/list-item": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|body",
 					"fontSize": "var:preset|font-size|root"
+				},
+				"color": {
+					"text": "var:preset|color|primary"
 				}
 			},
 			"core/paragraph": {
+				"color": {
+					"text": "var:preset|color|primary"
+				},
 				"typography": {
 					"fontFamily": "var:preset|font-family|body",
 					"fontSize": "var:preset|font-size|root"
@@ -429,6 +432,9 @@
 				}
 			},
 			"heading": {
+				"color": {
+					"text": "var:preset|color|primary"
+				},
 				"typography": {
 					"fontFamily": "var:preset|font-family|headings"
 				},
@@ -437,7 +443,8 @@
 						"bottom": "var:preset|spacing|sm",
 						"top": "0"
 					}
-				}
+				},
+				"css": "text-wrap:pretty"
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 @use "../abstracts/fluid-type-utils" as fluid-type;
+@use "../abstracts/variables" as v;
 
 @font-face {
 	font-family: Mulish;
@@ -74,6 +75,10 @@ $headings: (
 	.h#{$heading} {
 		text-wrap: pretty;
 		font-size: var(--wp--preset--font-size--#{$slug});
+		font-family: var(
+			--wp--preset--font-family--headings,
+			#{v.$font-headings}
+		);
 	}
 	.fs-#{$heading} {
 		font-size: var(--wp--preset--font-size--#{$slug}) !important;
