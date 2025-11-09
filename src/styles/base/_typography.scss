@@ -47,6 +47,8 @@
 }
 
 body {
+	--bs-body-font-size: var(--wp--preset--font-size--root);
+
 	text-wrap: pretty;
 	word-break: normal;
 }

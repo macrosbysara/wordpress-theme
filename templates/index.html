@@ -61,9 +61,23 @@
 					padding-left: var( --wp--preset--spacing--base );
 				"
 			>
-				<!-- wp:post-date {"style":{"spacing":{"padding":{"top":"var:preset|spacing|xs","bottom":"var:preset|spacing|xs","left":"var:preset|spacing|base","right":"var:preset|spacing|base"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"border":{"radius":"5px"}},"backgroundColor":"primary","textColor":"white","fontSize":"root"} /-->
+				<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group">
+					<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"lg"} /-->
 
-				<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"lg"} /-->
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|sm"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+					<div class="wp-block-group">
+						<!-- wp:post-date {"style":{"border":{"radius":"5px"}},"fontSize":"root"} /-->
+
+						<!-- wp:paragraph -->
+						<p>in</p>
+						<!-- /wp:paragraph -->
+
+						<!-- wp:post-terms {"term":"category"} /-->
+					</div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
 
 				<!-- wp:post-excerpt {"moreText":"Read More","excerptLength":30,"className":"flex-grow-1","style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"fontSize":"root"} /-->
 			</div>
