@@ -12,15 +12,8 @@
 * Also, you can add custom colors with the sass `map` below
 */
 
-$primary: rgb(61 28 17);
-$secondary: rgb(140 101 72);
-$custom-colors: (
-	"primary-light": rgb(116 60 24),
-	"secondary-light": rgb(210 189 182),
-	"gray": rgb(90 88 92),
-	"black": black,
-	"white": white,
-);
+$primary: v.$primary;
+$secondary: v.$secondary;
 
 // ================================================
 
@@ -127,7 +120,7 @@ $enable-dark-mode: false;
 // Map Overrides Here (Optional)
 
 // Custom Colors to extend the theme with
-$theme-colors: map.merge($theme-colors, $custom-colors);
+$theme-colors: map.merge($theme-colors, v.$custom-colors);
 
 // Required Bootstrap Modules
 @import "bootstrap/scss/maps";
@@ -174,17 +167,16 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 
 // @import "bootstrap/scss/images";
 // @import "bootstrap/scss/tables";
-@import "bootstrap/scss/forms";
+// @import "bootstrap/scss/forms";
 
 // @import "bootstrap/scss/button-group";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar"; // Requires nav
-// @import "bootstrap/scss/card";
-@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/card";
 
+// @import "bootstrap/scss/breadcrumb";
 // @import "bootstrap/scss/accordion";
-@import "bootstrap/scss/pagination";
-
+// @import "bootstrap/scss/pagination";
 // @import "bootstrap/scss/badge";
 // @import "bootstrap/scss/alert";
 // @import "bootstrap/scss/progress";

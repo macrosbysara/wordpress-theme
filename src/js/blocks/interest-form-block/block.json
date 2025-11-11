@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mbs/interest-form",
+	"version": "1.0.0",
+	"title": "Interest Form",
+	"category": "widgets",
+	"icon": "email",
+	"description": "A form block for users to express interest or sign up.",
+	"attributes": {
+		"borderRadius": {
+			"type": "string",
+			"default": "20px"
+		},
+		"borderColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"buttonColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"buttonStyle": {
+			"type": "string",
+			"default": "default",
+			"enum": [ "outline", "default" ]
+		},
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"buttonBorderRadius": {
+			"type": "string",
+			"default": "50rem"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
