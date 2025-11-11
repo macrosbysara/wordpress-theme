@@ -1,6 +1,20 @@
 $transition-standard: 0.15s ease-in-out;
 
 /* ////////////
+// COLORS
+///////////// */
+
+$primary: rgb(61 28 17);
+$secondary: rgb(140 101 72);
+$custom-colors: (
+	"primary-light": rgb(116 60 24),
+	"secondary-light": rgb(210 189 182),
+	"gray": rgb(90 88 92),
+	"black": black,
+	"white": white,
+);
+
+/* ////////////
 // TYPOGRAPHY
 ///////////// */
 

@@ -36,6 +36,7 @@ class Utils_Loader {
 		// Theme Utils
 		$theme_files = array(
 			'gutenberg-handler' => 'Gutenberg_Handler',
+			'rest-router'       => 'Rest_Router',
 		);
 		$this->load_utils( '/theme', $theme_files );
 		$this->load_acf_utils();

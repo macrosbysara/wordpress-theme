@@ -20,6 +20,7 @@ class Gutenberg_Handler {
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+		add_action( 'init', array( $this, 'register_theme_blocks' ) );
 	}
 
 	/**
@@ -57,5 +58,14 @@ class Gutenberg_Handler {
 		foreach ( $opt_out_features as $feature ) {
 			remove_theme_support( $feature );
 		}
+	}
+
+	/**
+	 * Register any theme-specific blocks
+	 */
+	public function register_theme_blocks() {
+		// Load blocks
+		$blocks_path = get_template_directory() . '/build';
+		wp_register_block_types_from_metadata_collection( $blocks_path . '/js/blocks', $blocks_path . '/blocks-manifest.php' );
 	}
 }
