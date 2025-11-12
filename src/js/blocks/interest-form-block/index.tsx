@@ -91,7 +91,7 @@ registerBlockType( metadata.name, {
 					<button type="submit" className="btn btn-primary">Submit</button>
 				</div>
 				<div className="col-12 response-area" />
-				<div className="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2" />
+				<div className="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2" data-appearance="interaction-only" />
 			</form>
 		);
 	},

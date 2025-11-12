@@ -131,12 +131,12 @@ class Rest_Router extends WP_REST_Controller {
 		if ( ! $verified ) {
 			return false;
 		}
-		// Validate Cloudflare Turnstile.
-		// $this->validate_turnstile(
-		// sanitize_text_field( $_POST['cf-turnstile-response'] ?? '' ),
-		// '0x4AAAAAAAD7F7B8D3E6B1C2D3E4F5A6B7C8D9E0F'
-		// );
-		return true;
+		if ( ! isset( $_POST['cf-turnstile-response'] ) ) {
+			return false;
+		}
+		return $this->cloudflare_validation(
+			sanitize_text_field( $_POST['cf-turnstile-response'] ?? '' )
+		);
 	}
 
 
@@ -144,11 +144,10 @@ class Rest_Router extends WP_REST_Controller {
 	 * Validate Cloudflare Turnstile response.
 	 *
 	 * @param string      $token    The Turnstile token from the client.
-	 * @param string      $secret   The secret key for server-side validation.
 	 * @param string|null $remoteip Optional. The user's IP address.
-	 * @return array The validation response.
+	 * @return bool True if validation is successful, false otherwise.
 	 */
-	private function validate_turnstile( $token, $secret, $remoteip = null ) {
+	private function cloudflare_validation( string $token, ?string $remoteip = null ): bool {
 		$url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 		$data = array(
@@ -160,24 +159,20 @@ class Rest_Router extends WP_REST_Controller {
 			$data['remoteip'] = $remoteip;
 		}
 
-		$options = array(
-			'http' => array(
-				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-				'method'  => 'POST',
-				'content' => http_build_query( $data ),
-			),
+		$response = wp_remote_post(
+			$url,
+			array(
+				'headers' => array( 'Content-Type' => 'application/x-www-form-urlencoded' ),
+				'body'    => $data,
+				'timeout' => 10,
+			)
 		);
-
-		$context  = stream_context_create( $options );
-		$response = file_get_contents( $url, false, $context );
-
-		if ( $response === false ) {
-			return array(
-				'success'     => false,
-				'error-codes' => array( 'internal-error' ),
-			);
+		if ( is_wp_error( $response ) ) {
+			return false;
 		}
 
-		return json_decode( $response, true );
+		$response      = wp_remote_retrieve_body( $response );
+		$response_data = json_decode( $response, true );
+		return $response_data['success'] ?? false;
 	}
 }
