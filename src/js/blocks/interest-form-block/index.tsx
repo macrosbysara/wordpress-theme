@@ -75,7 +75,6 @@ registerBlockType( metadata.name, {
 						id="mbs-interest"
 						name="interest"
 						aria-label="Interest"
-						autoComplete="section-interest"
 					>
 						{ selectOptions.map( ( option ) => (
 							<option
@@ -88,10 +87,11 @@ registerBlockType( metadata.name, {
 					</select>
 					<label htmlFor="mbs-interest">Interest</label>
 				</div>
-
 				<div className="col-12">
 					<button type="submit" className="btn btn-primary">Submit</button>
 				</div>
+				<div className="col-12 response-area" />
+				<div className="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2" />
 			</form>
 		);
 	},

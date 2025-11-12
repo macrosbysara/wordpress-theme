@@ -32,6 +32,27 @@ class Theme_Init {
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
+		// add_filter(
+		// 'wp_resource_hints',
+		// function ( $urls, $relation_type ) {
+		// if ( 'preconnect' === $relation_type ) {
+		// $target = 'https://challenges.cloudflare.com';
+		// Only add if it doesn’t already exist
+		// if ( ! in_array( $target, $urls, true ) ) {
+		// $urls[] = $target;
+		// }
+		// }
+		// return $urls;
+		// },
+		// 10,
+		// 2
+		// );
+		add_action(
+			'wp_body_open',
+			function () {
+				echo '<div class="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2"></div>';
+			}
+		);
 	}
 
 	/** Remove comments, pings and trackbacks support from posts types. */
@@ -100,7 +121,7 @@ class Theme_Init {
 
 			$deps = $assets['dependencies'];
 			if ( 'bootstrap' !== $handle ) {
-				// Ensure bootstrap JS loads after jQuery
+				// Ensure assets load after bootstrap for proper overrides
 				$deps = array_merge( $deps, array( 'bootstrap' ) );
 			}
 			wp_enqueue_script(
