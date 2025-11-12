@@ -31,7 +31,7 @@ module.exports = {
 			filename: `[name].js`,
 		},
 		plugins: [
-			...defaultConfig.plugins,
+			...defaultConfig?.plugins,
 			new RemoveEmptyScriptsPlugin( {
 				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
 			} ),
