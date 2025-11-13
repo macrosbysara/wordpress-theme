@@ -22,11 +22,16 @@ registerBlockType( metadata.name, {
 	 */
 	edit: Edit,
 	save: ( { attributes } ) => {
-		const blockGap = parseSpacing( attributes?.style?.spacing || {} );
+		const { style, borderRadius, borderColor, buttonColor, buttonBackgroundColor, buttonBorderColor } = attributes;
+		const blockGap = parseSpacing( style?.spacing || {} );
 		const blockProps = useBlockProps.save( {
-			className: 'row g-3',
 			style: {
 				'--gap': blockGap,
+				'--border-radius': borderRadius,
+				'--border-color': borderColor,
+				'--button-color': buttonColor,
+				'--button-background-color': buttonBackgroundColor,
+				'--button-border-color': buttonBorderColor,
 			},
 			action: '/wp-json/mbs/v1/forms/interest-form',
 			method: 'post',

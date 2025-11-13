@@ -3,22 +3,25 @@ import { Fragment } from '@wordpress/element';
 
 import { selectOptions } from './consts';
 import './editor.scss';
-import BlockSettings from './BlockSettings';
 import BlockStyles from './BlockStyles';
 import parseSpacing from './_lib/parseSpacing';
 
 export default function Edit( props ) {
-	const { style } = props.attributes;
+	const { style, borderRadius, borderColor, buttonColor, buttonBackgroundColor, buttonBorderColor } = props.attributes;
 	const blockGap = parseSpacing( style?.spacing || {} );
 	const blockProps = useBlockProps( {
 		disabled: true,
 		style: {
 			'--gap': blockGap,
+			'--border-radius': borderRadius,
+			'--border-color': borderColor,
+			'--button-color': buttonColor,
+			'--button-background-color': buttonBackgroundColor,
+			'--button-border-color': buttonBorderColor,
 		},
 	} );
 	return (
 		<Fragment>
-			<BlockSettings { ...props } />
 			<BlockStyles { ...props } />
 			<form { ...blockProps }>
 				<div className="col-md-6 form-floating">

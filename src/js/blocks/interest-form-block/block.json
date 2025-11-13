@@ -20,18 +20,13 @@
 			"type": "string",
 			"default": "primary"
 		},
-		"buttonStyle": {
-			"type": "string",
-			"default": "default",
-			"enum": [ "outline", "default" ]
-		},
 		"buttonBackgroundColor": {
 			"type": "string",
 			"default": "primary"
 		},
-		"buttonBorderRadius": {
+		"buttonBorderColor": {
 			"type": "string",
-			"default": "50rem"
+			"default": "primary"
 		}
 	},
 	"supports": {
