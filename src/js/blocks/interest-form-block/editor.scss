@@ -2,10 +2,9 @@
 @use "../../../styles/abstracts/variables" as v;
 
 /* Button styles */
-.btn {
+.wp-block-mbs-interest-form .btn {
 	display: inline-block;
 	font-weight: 400;
-	color: #fff;
 	text-align: center;
 	vertical-align: middle;
 	user-select: none;
@@ -18,8 +17,8 @@
 	cursor: pointer;
 
 	&.btn-primary {
-		background-color: v.$primary;
-		border-color: v.$primary;
-		color: white;
+		background-color: var(--button-background-color, v.$primary);
+		border-color: var(--button-border-color, v.$primary);
+		color: var(--button-color, white);
 	}
 }
