@@ -22,11 +22,13 @@ if ( forms.length ) {
 					const responseData = await response.json();
 					const responseArea = form.querySelector<HTMLDivElement>( '.response-area' );
 					if ( responseArea ) {
-						responseArea.innerText = responseData.message;
+						responseArea.innerHTML = ``;
+						responseArea.innerHTML = `<p class="response-${ responseData.data.status === 200 ? 'success' : 'error' }">${ responseData.message }</p>`;
 					}
 					// form.reset();
 				} else if ( responseArea ) {
-					responseArea.innerText = 'There was an error submitting the form. Please try again later.';
+					responseArea.innerHTML = ``;
+					responseArea.innerHTML = '<p class="response-error">There was an error submitting the form. Please try again later.</p>';
 				} else {
 					// eslint-disable-next-line no-alert
 					alert( 'There was an error submitting the form. Please try again later.' );

@@ -19,7 +19,8 @@ $text-muted: #6c757d;
 	color: var(--wp--preset--color--primary, v.$primary);
 	background-color: white;
 	background-clip: padding-box;
-	border: 2px solid $border-color;
+	border: var(--input-border-width, 2px) solid
+		var(--input-border-color, #{$border-color});
 	border-radius: var(--border-radius, var(--default-border-radius));
 	transition: fn.transition(border-color, box-shadow, padding);
 	box-shadow: none;
@@ -45,6 +46,7 @@ $text-muted: #6c757d;
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--gap, var(--default-gap));
+	border: 0;
 
 	.col-12 {
 		flex: 1 0 100%;
@@ -114,6 +116,82 @@ $text-muted: #6c757d;
 		&::placeholder {
 			color: transparent;
 			opacity: 0;
+		}
+	}
+
+	/* Button styles */
+	button[type="submit"] {
+		flex: 0 1 auto;
+		display: inline-block;
+		font-weight: 400;
+		color: var(--button-color, white);
+		text-align: center;
+		vertical-align: middle;
+		user-select: none;
+		background-color: var(
+			--button-background-color,
+			var(--wp--preset--color--primary, v.$primary)
+		);
+		border: var(--button-border-width, 1px) solid
+			var(
+				--button-border-color,
+				var(--wp--preset--color--primary, v.$primary)
+			);
+		padding: 0.5rem 1rem;
+		font-size: var(--wp--preset--font-size--root, 1rem);
+		line-height: 1.5;
+		border-radius: 50rem;
+		cursor: pointer;
+		transition: fn.transition(
+			color,
+			background-color,
+			border-color,
+			box-shadow,
+			translate
+		);
+
+		@include m.interaction {
+			color: var(--button-background-color, white);
+			background-color: var(--button-color, transparent);
+			border-color: var(
+				--button-border-color,
+				var(--wp--preset--color--primary, v.$primary)
+			);
+			text-decoration: none;
+			box-shadow: var(--btn-hover-box-shadow);
+			translate: var(--btn-hover-translate-x) var(--btn-hover-translate-y);
+		}
+	}
+
+	.form-footer {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		gap: 0.5rem;
+
+		& > *:not([type="submit"]) {
+			flex: 1 1 auto;
+		}
+	}
+
+	.response-area {
+		.response-error,
+		.response-success {
+			border-radius: 1.25rem;
+			margin-bottom: 0;
+			padding: var(--wp--preset--spacing--sm)
+				var(--wp--preset--spacing--lg);
+		}
+
+		.response-success {
+			background-color: var(--wp--preset--color--sage);
+			color: white;
+		}
+
+		.response-error {
+			background-color: var(--bs-danger-bg-subtle, #f8d7da);
+			border: 1px solid var(--bs-danger, #dc3545);
+			color: var(--bs-danger-text, #842029);
 		}
 	}
 }
