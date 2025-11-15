@@ -34,7 +34,7 @@ class Rest_Router extends WP_REST_Controller {
 			'/interest-form',
 			array(
 				'methods'             => WP_REST_Server::CREATABLE,
-				'callback'            => array( $this, 'example_endpoint_callback' ),
+				'callback'            => array( $this, 'handle_interest_form' ),
 				'permission_callback' => array( $this, 'allow_public_access' ),
 				'args'                => array(
 					'firstName' => array(
@@ -74,15 +74,16 @@ class Rest_Router extends WP_REST_Controller {
 	 * @param WP_REST_Request $request The REST request.
 	 * @return WP_REST_Response The REST response.
 	 */
-	public function example_endpoint_callback( WP_REST_Request $request ): WP_REST_Response {
+	public function handle_interest_form( WP_REST_Request $request ): WP_REST_Response {
 		$first_name = $request->get_param( 'firstName' );
 		$last_name  = $request->get_param( 'lastName' );
 		$email      = $request->get_param( 'email' );
 		$interest   = $request->get_param( 'interest' );
 		$data       = array(
-			'status'  => 'success',
+			'code'    => 'success',
 			'message' => 'Interest form submitted successfully!',
 			'data'    => array(
+				'status'    => 200,
 				'firstName' => $first_name,
 				'lastName'  => $last_name,
 				'email'     => $email,

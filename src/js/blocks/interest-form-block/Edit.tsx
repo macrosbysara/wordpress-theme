@@ -2,22 +2,23 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 
 import { selectOptions } from './consts';
-import './editor.scss';
 import BlockStyles from './BlockStyles';
 import parseSpacing from './_lib/parseSpacing';
 
 export default function Edit( props ) {
-	const { style, borderRadius, borderColor, buttonColor, buttonBackgroundColor, buttonBorderColor } = props.attributes;
+	const { style, borderRadius, inputBorder, buttonColor, buttonBackgroundColor, buttonBorder } = props.attributes;
 	const blockGap = parseSpacing( style?.spacing || {} );
 	const blockProps = useBlockProps( {
 		disabled: true,
 		style: {
 			'--gap': blockGap,
 			'--border-radius': borderRadius,
-			'--border-color': borderColor,
+			'--input-border-color': inputBorder.color,
+			'--input-border-width': inputBorder.width,
 			'--button-color': buttonColor,
 			'--button-background-color': buttonBackgroundColor,
-			'--button-border-color': buttonBorderColor,
+			'--button-border-color': buttonBorder.color,
+			'--button-border-width': buttonBorder.width,
 		},
 	} );
 	return (

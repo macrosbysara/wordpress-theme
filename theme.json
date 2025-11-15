@@ -52,7 +52,7 @@
 				{
 					"name": "Primary",
 					"slug": "primary",
-					"color": "rgb(61, 28, 17)"
+					"color": "rgb(60, 28, 18)"
 				},
 				{
 					"name": "Gray",
@@ -67,12 +67,12 @@
 				{
 					"name": "Secondary",
 					"slug": "secondary",
-					"color": "rgb(140, 101, 72)"
+					"color": "rgb(135, 82, 66)"
 				},
 				{
 					"name": "Secondary Light",
 					"slug": "secondary-light",
-					"color": "rgb(210, 189, 182)"
+					"color": "rgb(209, 188, 181)"
 				},
 				{
 					"name": "White",
@@ -84,6 +84,17 @@
 					"slug": "black",
 					"color": "rgb(0, 0, 0)"
 				},
+				{
+					"name": "Sage",
+					"slug": "sage",
+					"color": "rgb(33, 79, 76)"
+				},
+				{
+					"name": "Muted Orange",
+					"slug": "muted-orange",
+					"color": "rgb(193, 128, 98)"
+				},
+
 				{
 					"name": "Drop Shadow",
 					"slug": "drop-shadow",

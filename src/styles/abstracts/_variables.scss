@@ -4,11 +4,13 @@ $transition-standard: 0.15s ease-in-out;
 // COLORS
 ///////////// */
 
-$primary: rgb(61 28 17);
-$secondary: rgb(140 101 72);
+$primary: rgb(60 28 18);
+$secondary: rgb(135 82 66);
 $custom-colors: (
 	"primary-light": rgb(116 60 24),
-	"secondary-light": rgb(210 189 182),
+	"secondary-light": rgb(209 188 181),
+	"muted-orange": rgb(193 128 98),
+	"sage": rgb(33 79 76),
 	"gray": rgb(90 88 92),
 	"black": black,
 	"white": white,

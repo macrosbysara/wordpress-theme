@@ -12,9 +12,12 @@
 			"type": "string",
 			"default": "20px"
 		},
-		"borderColor": {
-			"type": "string",
-			"default": "primary"
+		"inputBorder": {
+			"type": "object",
+			"default": {
+				"color": "primary",
+				"width": "2px"
+			}
 		},
 		"buttonColor": {
 			"type": "string",
@@ -24,9 +27,12 @@
 			"type": "string",
 			"default": "primary"
 		},
-		"buttonBorderColor": {
-			"type": "string",
-			"default": "primary"
+		"buttonBorder": {
+			"type": "object",
+			"default": {
+				"color": "primary",
+				"width": "2px"
+			}
 		}
 	},
 	"supports": {
@@ -40,7 +46,6 @@
 	},
 	"editorScript": "file:./index.js",
 	"viewScriptModule": "file:./view.ts",
-	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"render": "file:./render.php"
 }
