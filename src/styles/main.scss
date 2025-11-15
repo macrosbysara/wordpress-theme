@@ -1,4 +1,11 @@
 @use "./base/base";
 @use "./base/utilities";
-@use "./themeco-overrides";
+@use "./base/typography";
+
+// Block Overrides
+@use "./block-overrides/button";
+@use "./block-overrides/post-excerpt";
+@use "./block-overrides/query";
+
+// Plugin Overrides
 @use "./plugin-overrides/contact-form-seven";

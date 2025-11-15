@@ -29,7 +29,7 @@ export default defineConfig( [
 		)
 	),
 	{
-		files: [ 'wp-content/themes/**/src/js/**/*.{js,ts,jsx,tsx}' ],
+		files: [ 'src/js/**/*.{js,ts,jsx,tsx}' ],
 		languageOptions: {
 			globals: globals.browser,
 		},
