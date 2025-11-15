@@ -4,10 +4,6 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
 const defaultConfig = configs[ 1 ];
-/**
- * For SCSS files (no leading `_`)
- * Array of strings modeled after scss names (e.g. 'we-are-choctaw')
- */
 const styleSheets = []; // for scss only
 
 module.exports = {
@@ -16,8 +12,8 @@ module.exports = {
 		entry: () => {
 			return {
 				...defaultConfig.entry,
-				global: `src/index.ts`,
-				'vendors/bootstrap': `src/js/vendors/bootstrap.js`,
+				global: `./src/index.ts`,
+				'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
 				...addEntries( appNames, 'pages' ),
 				...addEntries( styleSheets, 'styles' ),
 				...addEntries( blockEditor, 'admin' ),
@@ -25,7 +21,7 @@ module.exports = {
 		},
 
 		output: {
-			path: __dirname + `/build`,
+			path: __dirname + `./build`,
 			filename: `[name].js`,
 		},
 		plugins: [
@@ -54,15 +50,15 @@ function addEntries( array, type ) {
 		styles: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
 			path: ( asset ) =>
-				`src/styles/pages/${ asset }.scss`,
+				`./src/styles/pages/${ asset }.scss`,
 		},
 		pages: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
-			path: ( asset ) => `src/js/${ asset }/index.ts`,
+			path: ( asset ) => `./src/js/${ asset }/index.ts`,
 		},
 		admin: {
 			outputDir: ( assetOutput ) => `admin/${ assetOutput }`,
-			path: ( asset ) => `src/js/gutenberg/${ asset }.ts`,
+			path: ( asset ) => `./src/js/gutenberg/${ asset }.ts`,
 		},
 	};
 	array.forEach( ( asset ) => {
