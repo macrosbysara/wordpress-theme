@@ -3,15 +3,15 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
-const defaultConfig = configs[ 1 ];
+const [ defaultConfig, moduleConfig ] = configs;
 const styleSheets = []; // for scss only
 
 module.exports = {
-	...defaultConfig,
+	...moduleConfig,
 	...{
 		entry: () => {
 			return {
-				...defaultConfig.entry(),
+				...moduleConfig.entry(),
 				global: `./src/index.ts`,
 				'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
 				...addEntries( appNames, 'pages' ),
