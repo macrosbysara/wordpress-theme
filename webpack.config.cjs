@@ -1,11 +1,11 @@
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
+const configs = require( '@wordpress/scripts/config/webpack.config.js' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 const THEME_DIR = `./macros-by-sara`;
 
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
-
+const defaultConfig = configs[ 1 ];
 /**
  * For SCSS files (no leading `_`)
  * Array of strings modeled after scss names (e.g. 'we-are-choctaw')
@@ -17,7 +17,7 @@ module.exports = {
 	...{
 		entry: () => {
 			return {
-				...defaultConfig.entry(),
+				...defaultConfig.entry,
 				global: `.${ THEME_DIR }/src/index.ts`,
 				'vendors/bootstrap': `.${ THEME_DIR }/src/js/vendors/bootstrap.js`,
 				...addEntries( appNames, 'pages' ),
