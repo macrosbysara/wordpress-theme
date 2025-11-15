@@ -9,22 +9,21 @@ const styleSheets = []; // for scss only
 module.exports = {
 	...moduleConfig,
 	...{
-		entry: () => {
-			return {
-				...moduleConfig.entry(),
-				global: `./src/index.ts`,
-				'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
-				...addEntries( appNames, 'pages' ),
-				...addEntries( styleSheets, 'styles' ),
-				...addEntries( blockEditor, 'admin' ),
-			};
-		},
+		entry: () => ( {
+			...defaultConfig.entry(),
+			global: `./src/index.ts`,
+			'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
+			...addEntries( appNames, 'pages' ),
+			...addEntries( styleSheets, 'styles' ),
+			...addEntries( blockEditor, 'admin' ),
+		} ),
 
 		output: {
 			path: __dirname + `./build`,
 			filename: `[name].js`,
 		},
 		plugins: [
+			...moduleConfig?.plugins,
 			...defaultConfig?.plugins,
 			new RemoveEmptyScriptsPlugin( {
 				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
