@@ -11,7 +11,7 @@ module.exports = {
 	...{
 		entry: () => {
 			return {
-				...defaultConfig.entry,
+				...defaultConfig.entry(),
 				global: `./src/index.ts`,
 				'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
 				...addEntries( appNames, 'pages' ),
