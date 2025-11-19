@@ -27,7 +27,7 @@ class Gutenberg_Handler {
 	 * Enqueue the block editor assets that control the layout of the Block Editor.
 	 */
 	public function enqueue_block_assets() {
-		$files = array( 'editDefaultBlocks' );
+		$files = array( 'editDefaultBlocks', 'prePublishValidation' );
 		foreach ( $files as $handle ) {
 			$assets = require_once get_stylesheet_directory() . "/build/admin/{$handle}.asset.php";
 
