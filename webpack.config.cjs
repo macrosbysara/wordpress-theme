@@ -2,7 +2,7 @@ const configs = require( '@wordpress/scripts/config/webpack.config.js' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 const appNames = [];
-const blockEditor = [ 'editDefaultBlocks' ];
+const blockEditor = [ 'editDefaultBlocks', 'prePublishValidation' ];
 const [ defaultConfig, moduleConfig ] = configs;
 const styleSheets = []; // for scss only
 
