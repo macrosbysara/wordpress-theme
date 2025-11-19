@@ -65,63 +65,39 @@ $block_props = get_block_wrapper_attributes(
 	)
 );
 ?>
-<form  <?php echo $block_props; ?>>
+<form <?php echo $block_props; ?>>
 	<div class="col-md-6 form-floating">
-		<input
-			type="text"
-			class="form-control"
-			id="mbs-first-name"
-			name="firstName"
-			placeholder="First name"
-			autocomplete="given-name"
-		/>
+		<input type="text" class="form-control" id="mbs-first-name" name="firstName" placeholder="First name" autocomplete="given-name" />
 		<label for="mbs-first-name">First name</label>
 	</div>
 
 	<div class="col-md-6 form-floating">
-		<input
-			type="text"
-			class="form-control"
-			id="mbs-last-name"
-			name="lastName"
-			placeholder="Last name"
-			autoComplete="family-name"
-		/>
+		<input type="text" class="form-control" id="mbs-last-name" name="lastName" placeholder="Last name" autoComplete="family-name" />
 		<label for="mbs-last-name">Last name</label>
 	</div>
 
 	<div class="col-12 form-floating">
-		<input
-			type="email"
-			class="form-control"
-			id="mbs-email"
-			name="email"
-			placeholder="name@example.com"
-			autocomplete="email"
-		/>
+		<input type="email" class="form-control" id="mbs-email" name="email" placeholder="name@example.com" autocomplete="email" />
 		<label for="mbs-email">Email address</label>
 	</div>
 
 	<div class="col-12 form-floating">
-		<select
-			class="form-select"
-			id="mbs-interest"
-			name="interest"
-			aria-label="Interest"
-		>
-		<?php foreach ( $select_options as $option ) : ?>
-			<option
-				value="<?php echo esc_attr( $option['value'] ); ?>"
-			>
+		<select class="form-select" id="mbs-interest" name="interest" aria-label="Interest">
+			<?php foreach ( $select_options as $option ) : ?>
+			<option value="<?php echo esc_attr( $option['value'] ); ?>">
 				<?php echo esc_html( $option['name'] ); ?>
 			</option>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</select>
 		<label for="mbs-interest">Interest</label>
 	</div>
 	<div class="form-footer">
 		<button type="submit">Submit</button>
 		<div class=" response-area"></div>
-		<div class="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2" data-appearance="interaction-only"></div>
+		<?php
+		if ( defined( 'CF_TURNSTILE_SECRET' ) && ! empty( CF_TURNSTILE_SECRET ) ) {
+			echo '<div class="cf-turnstile" data-sitekey="0x4AAAAAACAcVKqyxt1TEIP2" data-appearance="interaction-only"></div>';
+		}
+		?>
 	</div>
 </form>

@@ -123,6 +123,9 @@ class Rest_Router extends WP_REST_Controller {
 	 * @return bool
 	 */
 	public function allow_public_access( WP_REST_Request $request ): bool {
+		if ( ! defined( 'CF_TURNSTILE_SECRET' ) || empty( CF_TURNSTILE_SECRET ) ) {
+			return false;
+		}
 		$nonce   = null;
 		$headers = $request->get_headers();
 		if ( isset( $headers['x_wp_nonce'] ) ) {
