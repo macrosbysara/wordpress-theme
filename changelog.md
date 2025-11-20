@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 - [November 1, 2025]
+## 2.0.1 - [November 20, 2025]
 
 -   New Theme!
 

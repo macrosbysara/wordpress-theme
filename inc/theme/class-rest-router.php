@@ -75,14 +75,15 @@ class Rest_Router extends WP_REST_Controller {
 	 * @return WP_REST_Response The REST response.
 	 */
 	public function handle_interest_form( WP_REST_Request $request ): WP_REST_Response {
-		$first_name = $request->get_param( 'firstName' );
-		$last_name  = $request->get_param( 'lastName' );
-		$email      = $request->get_param( 'email' );
-		$interest   = $request->get_param( 'interest' );
-		$data       = array(
-			'code'    => 'success',
-			'message' => 'Interest form submitted successfully!',
-			'data'    => array(
+		$first_name     = $request->get_param( 'firstName' );
+		$last_name      = $request->get_param( 'lastName' );
+		$email          = $request->get_param( 'email' );
+		$interest       = $request->get_param( 'interest' );
+		$client_success = wp_mail( $email, 'Interest Form Submission', "Hey {$first_name}, thanks for your interest in $interest! I'll be in touch soon." );
+		$admin_success  = wp_mail( 'hello@macrosbysara.com', 'Interest Form Submission', "{$first_name} {$last_name} ({$email}) is interested in {$interest}." );
+		$success        = $client_success && $admin_success;
+		$data           = array(
+			'data' => array(
 				'status'    => 200,
 				'firstName' => $first_name,
 				'lastName'  => $last_name,
@@ -90,6 +91,13 @@ class Rest_Router extends WP_REST_Controller {
 				'interest'  => $interest,
 			),
 		);
+		if ( ! $success ) {
+			$data['message'] = 'Failed to send email.';
+			$data['code']    = 500;
+		} else {
+			$data['message'] = 'Interest form submitted successfully!';
+			$data['code']    = 200;
+		}
 		return rest_ensure_response( $data );
 	}
 
