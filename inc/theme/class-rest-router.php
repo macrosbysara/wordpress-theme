@@ -79,7 +79,7 @@ class Rest_Router extends WP_REST_Controller {
 		$last_name      = $request->get_param( 'lastName' );
 		$email          = $request->get_param( 'email' );
 		$interest       = $request->get_param( 'interest' );
-		$client_success = wp_mail( $email, 'Interest Form Submission', "Hey {$first_name}, thanks for your interest in $interest! I'll be in touch soon." );
+		$client_success = wp_mail( $email, 'Interest Form Submission', "Hey {$first_name}, thanks for your interest in $interest! I'll be in touch soon.", array( 'Reply-To' => 'hello@macrosbysara.com' ) );
 		$admin_success  = wp_mail( 'hello@macrosbysara.com', 'Interest Form Submission', "{$first_name} {$last_name} ({$email}) is interested in {$interest}." );
 		$success        = $client_success && $admin_success;
 		$data           = array(
