@@ -1,6 +1,15 @@
 # Changelog
 
-## 2.0.1 - [November 20, 2025]
+## 2.0.2 - [November 20, 2025]
+
+-   Fixed: Interest Form has appropriate "Reply-To" header
+
+## 2.0.1
+
+-   Fixed: Linktree links used "stretched-link" pattern appropriately
+-   Fixed: Interest form sends emails
+
+## 2.0.0
 
 -   New Theme!
 
