@@ -1,13 +1,13 @@
-const configs = require( '@wordpress/scripts/config/webpack.config.js' );
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
-const [ defaultConfig, moduleConfig ] = configs;
+// const [ defaultConfig, moduleConfig ] = configs;
 const styleSheets = []; // for scss only
 
 module.exports = {
-	...moduleConfig,
+	...defaultConfig,
 	...{
 		entry: () => ( {
 			...defaultConfig.entry(),
@@ -23,7 +23,6 @@ module.exports = {
 			filename: `[name].js`,
 		},
 		plugins: [
-			...moduleConfig?.plugins,
 			...defaultConfig?.plugins,
 			new RemoveEmptyScriptsPlugin( {
 				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,

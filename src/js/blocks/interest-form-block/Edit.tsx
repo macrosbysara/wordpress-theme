@@ -73,6 +73,7 @@ export default function Edit( props ) {
 						aria-label="Interest"
 						autoComplete="section-interest"
 					>
+						<option value="" selected>I&apos;m interested in&hellip;</option>
 						{ selectOptions.map( ( option ) => (
 							<option
 								key={ option.value }

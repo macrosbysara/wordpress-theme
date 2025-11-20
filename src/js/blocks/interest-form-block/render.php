@@ -83,6 +83,7 @@ $block_props = get_block_wrapper_attributes(
 
 	<div class="col-12 form-floating">
 		<select class="form-select" id="mbs-interest" name="interest" aria-label="Interest">
+			<option value="" disabled selected>I&apos;m interested in&hellip;</option>
 			<?php foreach ( $select_options as $option ) : ?>
 			<option value="<?php echo esc_attr( $option['value'] ); ?>">
 				<?php echo esc_html( $option['name'] ); ?>
