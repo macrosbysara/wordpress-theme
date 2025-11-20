@@ -35,7 +35,21 @@
 		"editor.useTabStops": true,
 		"prettier.useTabs": false
 	},
-	"cSpell.words": [ "cpts", "Linktree", "macrosbysara", "wpcf" ],
+	"cSpell.words": [
+		"alignfull",
+		"alignwide",
+		"atts",
+		"azvr",
+		"bloginfo",
+		"choctawnationofoklahoma",
+		"cpts",
+		"Linktree",
+		"macrosbysara",
+		"remoteip",
+		"trackbacks",
+		"wght",
+		"wpcf"
+	],
 	"css.format.spaceAroundSelectorSeparator": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always",

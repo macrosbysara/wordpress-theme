@@ -1,0 +1,21 @@
+@forward "./bs_breakpoints";
+@use "./functions" as fn;
+
+@mixin interaction() {
+	&:hover,
+	&:active,
+	&:focus {
+		@content;
+	}
+}
+
+@mixin btn-interaction($color, $bg-color) {
+	transition: fn.transition(color, background-color, box-shadow, translate);
+
+	@include interaction {
+		color: $color;
+		background-color: $bg-color;
+		box-shadow: var(--btn-hover-box-shadow);
+		translate: var(--btn-hover-translate-x) var(--btn-hover-translate-y);
+	}
+}

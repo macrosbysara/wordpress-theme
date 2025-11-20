@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 - [November 1, 2025]
+
+-   New Theme!
+
 ## 1.3.2 - [October 29, 2025]
 
 -   Chore: Add lints and configs

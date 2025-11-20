@@ -1,13 +1,23 @@
-/* stylelint-disable selector-class-pattern */
+@use "../abstracts/mixins" as m;
 
-.highlight--color-primary {
-	color: var(--color-primary);
+.inset-0 {
+	inset: 0;
 }
 
-.highlight--color-secondary {
-	color: var(--color-secondary);
-}
+.linktree-link {
+	@include m.btn-interaction(var(--wp--preset--color--primary), white);
 
-.highlight--color-secondary--light {
-	color: var(--color-secondary--light);
+	a {
+		position: relative;
+		width: 100%;
+		display: inline-block;
+		text-decoration: none;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+		}
+	}
 }
