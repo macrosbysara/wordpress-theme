@@ -13,6 +13,7 @@ module.exports = {
 			...defaultConfig.entry(),
 			global: `./src/index.ts`,
 			'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
+			'admin/editor': `./src/styles/editor.scss`,
 			...addEntries( appNames, 'pages' ),
 			...addEntries( styleSheets, 'styles' ),
 			...addEntries( blockEditor, 'admin' ),

@@ -13,7 +13,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: macrosbysara/shared-github-actions/.github/workflows/deploy-theme.yml@main
         with:
-            REMOTE: # Remote folder to deploy to
+            REMOTE: "macrosbysara.com" # Remote folder to deploy to
+            theme_name: "macros-by-sara"
+            flags: "-azr --delete"
         secrets: inherit
 
     deploy-stg:

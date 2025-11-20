@@ -1,3 +1,23 @@
+@use "../abstracts/mixins" as m;
+
 .inset-0 {
 	inset: 0;
+}
+
+.linktree-link {
+	@include m.btn-interaction(var(--wp--preset--color--primary), white);
+
+	a {
+		position: relative;
+		width: 100%;
+		display: inline-block;
+		text-decoration: none;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+		}
+	}
 }

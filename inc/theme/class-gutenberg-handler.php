@@ -27,17 +27,29 @@ class Gutenberg_Handler {
 	 * Enqueue the block editor assets that control the layout of the Block Editor.
 	 */
 	public function enqueue_block_assets() {
-		$files = array( 'editDefaultBlocks' );
-		foreach ( $files as $handle ) {
+		$files = array(
+			'editDefaultBlocks' => 'script',
+			'editor'            => 'style',
+		);
+		foreach ( $files as $handle => $type ) {
 			$assets = require_once get_stylesheet_directory() . "/build/admin/{$handle}.asset.php";
-
-			wp_enqueue_script(
-				$handle,
-				get_stylesheet_directory_uri() . "/build/admin/{$handle}.js",
-				$assets['dependencies'],
-				$assets['version'],
-				array( 'strategy' => 'defer' )
-			);
+			if ( 'style' === $type || 'both' === $type ) {
+				wp_enqueue_style(
+					$handle,
+					get_stylesheet_directory_uri() . "/build/admin/{$handle}.css",
+					$assets['dependencies'],
+					$assets['version']
+				);
+			}
+			if ( 'script' === $type || 'both' === $type ) {
+				wp_enqueue_script(
+					$handle,
+					get_stylesheet_directory_uri() . "/build/admin/{$handle}.js",
+					$assets['dependencies'],
+					$assets['version'],
+					array( 'strategy' => 'defer' )
+				);
+			}
 		}
 	}
 

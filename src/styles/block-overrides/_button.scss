@@ -4,19 +4,8 @@
 .wp-block-button {
 	&__link {
 		border: 2px solid var(--wp--preset--color--primary);
-		transition: fn.transition(
-			color,
-			background-color,
-			box-shadow,
-			translate
-		);
 
-		@include m.interaction {
-			color: var(--wp--preset--color--primary);
-			background-color: white;
-			box-shadow: var(--btn-hover-box-shadow);
-			translate: var(--btn-hover-translate-x) var(--btn-hover-translate-y);
-		}
+		@include m.btn-interaction(var(--wp--preset--color--primary), white);
 	}
 
 	&.is-style-outline &__link {
