@@ -13,14 +13,22 @@ namespace MacrosBySara;
  * Gutenberg Handler
  */
 class Gutenberg_Handler {
+	/**
+	 * Handle for the custom pre-publish sidebar
+	 *
+	 * @var string
+	 */
+	private string $custom_sidebar_handle;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
+		$this->custom_sidebar_handle = 'pre-publish-sidebar';
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_theme_blocks' ) );
+		add_action( 'init', array( $this, 'register_custom_sidebar_script' ) );
 	}
 
 	/**
@@ -67,5 +75,21 @@ class Gutenberg_Handler {
 		// Load blocks
 		$blocks_path = get_template_directory() . '/build';
 		wp_register_block_types_from_metadata_collection( $blocks_path . '/js/blocks', $blocks_path . '/blocks-manifest.php' );
+	}
+
+	/**
+	 * Register the custom pre-publish sidebar script
+	 */
+	public function register_custom_sidebar_script() {
+		$filename = 'prePublishValidation';
+		$assets   = require_once get_stylesheet_directory() . "/build/admin/{$filename}.asset.php";
+
+		wp_register_script(
+			$this->custom_sidebar_handle,
+			get_stylesheet_directory_uri() . "/build/admin/{$filename}.js",
+			$assets['dependencies'],
+			$assets['version'],
+			array( 'strategy' => 'defer' )
+		);
 	}
 }

@@ -22,13 +22,6 @@ module.exports = {
 			path: __dirname + `./build`,
 			filename: `[name].js`,
 		},
-		plugins: [
-			...moduleConfig?.plugins,
-			...defaultConfig?.plugins,
-			new RemoveEmptyScriptsPlugin( {
-				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
-			} ),
-		],
 	},
 };
 
