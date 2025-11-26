@@ -116,7 +116,7 @@ class Rest_Router extends WP_REST_Controller {
 		wp_enqueue_script(
 			'cloudflare',
 			'https://challenges.cloudflare.com/turnstile/v0/api.js',
-			array( 'global' ),
+			array(),
 			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			array(
 				'strategy' => 'async',
