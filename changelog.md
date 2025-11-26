@@ -1,8 +1,8 @@
 # Changelog
 
-## 2.1.0 - [November 22, 2025]
+## 2.0.3 - [November 25, 2025]
 
--   Added: Further editor styles
+-   Tweak: Further editor styles
 
 ## 2.0.2 - [November 20, 2025]
 
