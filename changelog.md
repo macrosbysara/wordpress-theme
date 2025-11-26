@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3 - [November 25, 2025]
+
+-   Tweak: Further editor styles
+
 ## 2.0.2 - [November 20, 2025]
 
 -   Fixed: Interest Form has appropriate "Reply-To" header
