@@ -113,10 +113,19 @@ class Rest_Router extends WP_REST_Controller {
 				'nonce' => wp_create_nonce( 'wp_rest' ),
 			)
 		);
+		$deps = array( 'global' );
+		global $post;
+		if ( is_singular() && isset( $post->ID ) ) {
+			$current_template = get_page_template_slug( $post->ID );
+			if ( 'app' === $current_template ) {
+				$deps = array();
+
+			}
+		}
 		wp_enqueue_script(
 			'cloudflare',
 			'https://challenges.cloudflare.com/turnstile/v0/api.js',
-			array( 'global' ),
+			$deps,
 			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			array(
 				'strategy' => 'async',

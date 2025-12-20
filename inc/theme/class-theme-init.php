@@ -95,6 +95,14 @@ class Theme_Init {
 				'css' => 'global',
 			),
 		);
+		// Get the current page template, if available
+		global $post;
+		if ( is_singular() && isset( $post->ID ) ) {
+			$current_template = get_page_template_slug( $post->ID );
+			if ( 'app' === $current_template ) {
+				return;
+			}
+		}
 		foreach ( $files as $handle => $paths ) {
 			$assets = require_once get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
 

@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mbs/check-in-app",
+	"version": "1.0.0",
+	"title": "Check In App",
+	"category": "widgets",
+	"icon": "email",
+	"description": "The check in app block.",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false,
+		"inserter": true
+	},
+	"editorScript": "file:./index.tsx",
+	"viewScript": "file:./app.tsx",
+	"viewStyle": "file:./style-index.css"
+}

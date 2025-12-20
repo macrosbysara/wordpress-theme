@@ -40,6 +40,7 @@ class Utils_Loader {
 		);
 		$this->load_utils( '/theme', $theme_files );
 		$this->load_acf_utils();
+		$this->load_app_files();
 	}
 
 	/**
@@ -76,5 +77,15 @@ class Utils_Loader {
 
 			}
 		}
+	}
+
+	/**
+	 * Load App Files
+	 */
+	private function load_app_files() {
+		$app_files = array(
+			'login-flow' => 'Theme\App\Jwt_Wp_Login_Controller',
+		);
+		$this->load_utils( '/theme/app', $app_files );
 	}
 }
