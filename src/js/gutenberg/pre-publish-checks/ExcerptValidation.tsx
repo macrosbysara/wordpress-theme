@@ -1,8 +1,6 @@
 import { useSelect } from '@wordpress/data';
 import { store as editorStore } from '@wordpress/editor';
-import { Flex, FlexItem } from '@wordpress/components';
-import { check, caution, error, info } from '@wordpress/icons';
-import { createElement } from '@wordpress/element';
+import { Flex, FlexBlock, FlexItem, Notice } from '@wordpress/components';
 
 export default function ExcerptValidation() {
 	const postStatus = useSelect( ( select ) => {
@@ -12,14 +10,14 @@ export default function ExcerptValidation() {
 		return select( editorStore ).getEditedPostAttribute( 'excerpt' );
 	}, [] );
 	const validation = validateExcerpt( postStatus, excerpt );
-	const IconComponent = getValidationIcon( validation.status );
-	console.log( IconComponent );
+
 	return (
 		<Flex>
-			<FlexItem>{ createElement( IconComponent ) }</FlexItem>
-			<FlexItem>
-				<p>Excerpt: { validation.message }</p>
-			</FlexItem>
+			<Notice status={ validation.status } isDismissible={ false }>
+				<p style={ { marginBottom: 0 } }>
+					<strong>Excerpt:</strong> { validation.message }
+				</p>
+			</Notice>
 		</Flex>
 	);
 }
@@ -31,7 +29,7 @@ type ValidationResult = {
 };
 
 function validateExcerpt( status: string, excerpt: string ): ValidationResult {
-	const ignoredStatuses = [ 'draft', 'auto-draft', 'pending', 'private' ];
+	const ignoredStatuses = [ 'auto-draft', 'pending', 'private' ];
 	if ( ignoredStatuses.includes( status ) ) {
 		return {
 			status: 'info',
@@ -58,17 +56,4 @@ function validateExcerpt( status: string, excerpt: string ): ValidationResult {
 		valid: true,
 		message: 'Excerpt length is between 120 and 160 characters.',
 	};
-}
-
-function getValidationIcon( status: ValidationResult[ 'status' ] ) {
-	const icons = {
-		info,
-		error,
-		success: check,
-		warning: caution,
-	};
-	if ( ! icons[ status ] ) {
-		return null;
-	}
-	return icons[ status ];
 }
