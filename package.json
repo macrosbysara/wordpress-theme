@@ -1,6 +1,6 @@
 {
 	"name": "macros-by-sara-wp-theme",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "A WordPress theme for Macros By Sara",
 	"homepage": "https://github.com/macrosbysara/wordpress-theme#readme",
 	"bugs": {
@@ -35,26 +35,30 @@
 		"style.css",
 		"theme.json"
 	],
+	"dependencies": {
+		"bootstrap": "^5.3.8"
+	},
 	"devDependencies": {
-		"@eslint/compat": "^1.4.1",
-		"@eslint/eslintrc": "^3.3.1",
-		"@wordpress/block-editor": "^15.8.0",
-		"@wordpress/components": "^30.8.0",
-		"@wordpress/compose": "^7.35.0",
-		"@wordpress/data": "^10.35.0",
-		"@wordpress/hooks": "^4.35.0",
-		"eslint": "^9.39.1",
+		"@eslint/compat": "^2.0.3",
+		"@eslint/eslintrc": "^3.3.5",
+		"@wordpress/block-editor": "^15.15.0",
+		"@wordpress/blocks": "^15.15.0",
+		"@wordpress/components": "^32.4.0",
+		"@wordpress/compose": "^7.42.0",
+		"@wordpress/data": "^10.42.0",
+		"@wordpress/dom-ready": "^4.42.0",
+		"@wordpress/element": "^6.42.0",
+		"@wordpress/eslint-plugin": "^24.4.0",
+		"@wordpress/hooks": "^4.42.0",
+		"@wordpress/scripts": "^31.7.0",
+		"eslint": "^9",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-import-resolver-typescript": "^4.4.4",
 		"eslint-plugin-react-hooks": "^7.0.1",
-		"globals": "^16.5.0",
-		"stylelint": "^16.25.0",
-		"stylelint-config-standard-scss": "^16.0.0",
-		"stylelint-scss": "^6.12.1",
+		"globals": "^17.4.0",
+		"stylelint": "^17.5.0",
+		"stylelint-config-standard-scss": "^17.0.0",
+		"stylelint-scss": "^7.0.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
-	},
-	"dependencies": {
-		"@wordpress/scripts": "^31.0.0",
-		"bootstrap": "^5.3.8"
 	}
 }
