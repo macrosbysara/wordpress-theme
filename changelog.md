@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4 - [March 19, 2026]
+
+-   Chore: Update packages
+
 ## 2.0.3 - [November 25, 2025]
 
 -   Tweak: Further editor styles
