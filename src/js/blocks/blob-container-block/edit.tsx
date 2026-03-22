@@ -1,14 +1,30 @@
-import { useBlockProps, InspectorControls, HeightControl } from '@wordpress/block-editor';
-import { Panel, PanelBody, SelectControl } from '@wordpress/components';
+import { useBlockProps, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl } from '@wordpress/components';
 import Blob from '../_shared/Blob';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { blobType } = attributes;
-	const color = `var(--wp--preset--color--${ attributes.textColor || 'primary' })`;
+	const color = attributes.fillColor;
 	const blockProps = useBlockProps( { style: {
 		'--fill-color': color,
-		height: attributes.height,
 	} } );
+	const innerBlocksProps = useInnerBlocksProps( { className: 'blob-inner' }, { template: [
+		[
+			'core/heading',
+			{
+				level: 2,
+				placeholder: 'Add heading…',
+				textAlign: 'center',
+			},
+		],
+		[
+			'core/paragraph',
+			{
+				placeholder: 'Add content…',
+				align: 'center',
+			},
+		],
+	] } );
 	return <>
 		<InspectorControls>
 			<PanelBody title="Blob Settings">
@@ -28,18 +44,9 @@ export default function Edit( { attributes, setAttributes } ) {
 				/>
 			</PanelBody>
 		</InspectorControls>
-		<InspectorControls group="styles">
-			<PanelBody title="Blob Dimensions">
-				<HeightControl
-					label="Blob Height"
-					value={ attributes.height }
-					onChange={ ( value ) => setAttributes( { height: value } ) }
-				/>
-			</PanelBody>
-		</InspectorControls>
 
 		<div { ...blockProps }>
-			<Blob blobType={ blobType } />
+			<div { ...innerBlocksProps } />
 		</div>
 	</>;
 }
