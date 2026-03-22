@@ -32,7 +32,7 @@ class Gutenberg_Handler {
 			'editor'            => 'style',
 		);
 		foreach ( $files as $handle => $type ) {
-			$assets = require_once get_stylesheet_directory() . "/build/admin/{$handle}.asset.php";
+			$assets = require get_stylesheet_directory() . "/build/admin/{$handle}.asset.php";
 			if ( 'style' === $type || 'both' === $type ) {
 				wp_enqueue_style(
 					$handle,
