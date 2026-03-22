@@ -13,6 +13,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		<InspectorControls>
 			<PanelBody title="Blob Color">
 				<SelectControl
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
 					label="Blob Shape"
 					options={ [
 						{ label: 'Blob 1', value: '1' },
