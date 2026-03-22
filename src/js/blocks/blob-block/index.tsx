@@ -1,11 +1,24 @@
+import { registerBlockType } from '@wordpress/blocks';
+import { useBlockProps } from '@wordpress/block-editor';
 import './style.scss';
-import { registerBlock } from '@wordpress/blocks';
+import block from './block.json';
 import Edit from './edit';
-import save from './save';
-import icon from './blobs/blob-1.svg';
+import Blob from '../_shared/Blob';
 
-registerBlock( 'mbs/blob', {
+registerBlockType( block.name, {
 	edit: Edit,
-	save,
-	icon,
+	save: ( { attributes } ) => {
+		const { blobType } = attributes;
+		const color = `var(--wp--preset--color--${ attributes.textColor || 'primary' })`;
+		const blockProps = useBlockProps.save( { style: {
+			'--fill-color': color,
+			height: attributes.height,
+		} } );
+		return <div { ...blockProps }><Blob blobType={ blobType } /></div>;
+	},
+	icon: <svg className="mbs-blob-1" viewBox="0 0 397 360" fill="none"
+		xmlns="http://www.w3.org/2000/svg">
+		<path fillRule="evenodd" clipRule="evenodd" d="M396.883 135.349C396.285 116.726 393.156 98.3415 386.995 81.2526C382.704 69.3545 376.82 56.8586 369.572 46.4488C359.162 31.4928 343.519 17.8984 326.918 10.26C319.442 6.81716 311.637 4.31485 303.604 2.42599C293.609 0.0723503 283.498 -0.802441 273.417 0.85481C250.48 4.62001 232.422 16.6323 218.128 34.7056C212.411 41.9402 206.829 49.2688 201.69 56.9212C196.969 63.9508 192.111 70.8975 187.682 78.1071C173.881 100.562 156.944 122.272 134.934 137.224C106.902 156.266 71.592 158.588 43.9827 178.669C37.6577 183.265 31.2635 187.847 25.5876 193.248C8.64371 209.37 -1.43782 233.139 0.166852 256.458C2.48059 290.155 29.7792 318.036 57.586 334.041C102.239 359.743 158.071 363.81 208.252 356.888C222.12 354.975 235.719 351.762 249.019 347.26C265.706 341.606 281.639 334.512 296.432 324.843C342.292 294.875 380.967 246.148 391.546 191.575C395.031 173.586 397.468 153.693 396.883 135.349Z" fill="#3C1C12" />
+	</svg>
+	,
 } );

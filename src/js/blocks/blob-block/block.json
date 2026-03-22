@@ -8,28 +8,35 @@
 	"icon": "email",
 	"description": "A blob block for decorative purposes.",
 	"attributes": {
-		"width": {
+		"blobType": {
+			"type": "number",
+			"enum": [1, 2, 3, 4, 5],
+			"default": 1
+		},
+		"textColor": {
 			"type": "string",
-			"default": "20px"
+			"default": "primary"
 		},
 		"height": {
 			"type": "string",
-			"default": "20px"
-		},
-		"color": {
-			"type": "string",
-			"default": "primary"
+			"default": "200px"
 		}
 	},
 	"supports": {
 		"html": false,
 		"color": {
-			"background": true,
-			"text": false
+			"background": false,
+			"text": true
+		},
+		"dimensions": {
+			"height": true,
+			"width": true,
+			"aspectRatio": false,
+			"minHeight": true
 		},
 		"spacing": {
 			"margin": true,
-			"padding": true,
+			"padding": false,
 			"blockGap": false
 		}
 	},
