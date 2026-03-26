@@ -1,17 +1,14 @@
 .wp-block-mbs-blob-container-block {
-	mask-image: url("../_shared/blobs/blob-2.svg");
 	display: block;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	overflow: hidden;
 	aspect-ratio: 400 / 324; /* match your SVG */
-	mask-repeat: no-repeat;
-	mask-position: center;
-	mask-size: contain;
-	position: relative;
 
-	.blob-inner {
+	&__clip {
+		clip-path: url("../_shared/blobs/blob-2.svg");
+		overflow: hidden;
+	}
+
+	&__blob-inner {
+		padding: var(--blob-padding);
 		position: absolute;
 		inset: 0;
 		overflow: hidden;

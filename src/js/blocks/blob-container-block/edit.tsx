@@ -5,26 +5,24 @@ import Blob from '../_shared/Blob';
 export default function Edit( { attributes, setAttributes } ) {
 	const { blobType } = attributes;
 	const color = attributes.fillColor;
-	const blockProps = useBlockProps( { style: {
-		'--fill-color': color,
-	} } );
-	const innerBlocksProps = useInnerBlocksProps( { className: 'blob-inner' }, { template: [
-		[
-			'core/heading',
-			{
-				level: 2,
-				placeholder: 'Add heading…',
-				textAlign: 'center',
-			},
-		],
-		[
-			'core/paragraph',
-			{
-				placeholder: 'Add content…',
-				align: 'center',
-			},
-		],
-	] } );
+	const blockProps = useBlockProps( {
+		style: {
+			'--fill-color': color,
+			padding: 0,
+		} } );
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			className: 'wp-block-mbs-blob-container-block__blob-inner',
+			style: { '--blob-padding': attributes.padding },
+		}, { template: [
+			[
+				'core/paragraph',
+				{
+					placeholder: 'Add content…',
+					align: 'center',
+				},
+			],
+		] } );
 	return <>
 		<InspectorControls>
 			<PanelBody title="Blob Settings">
@@ -46,6 +44,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		</InspectorControls>
 
 		<div { ...blockProps }>
+			<div className="wp-block-mbs-blob-container-block__clip" />
 			<div { ...innerBlocksProps } />
 		</div>
 	</>;
