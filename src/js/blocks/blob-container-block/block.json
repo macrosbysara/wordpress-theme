@@ -10,9 +10,12 @@
 	"description": "A blob container block for clipping content.",
 	"attributes": {
 		"blobType": {
-			"type": "number",
-			"enum": [1, 2, 3, 4, 5],
-			"default": 1
+			"type": "string",
+			"enum": ["blob-1", "blob-2", "blob-3", "blob-4", "blob-5"],
+			"default": "blob-1"
+		},
+		"blockId": {
+			"type": "string"
 		},
 		"fillColor": {
 			"type": "string",
@@ -22,8 +25,8 @@
 	"supports": {
 		"html": false,
 		"color": {
-			"background": true,
-			"text": true
+			"background": false,
+			"text": false
 		},
 		"dimensions": {
 			"aspectRatio": false,
