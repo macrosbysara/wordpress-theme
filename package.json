@@ -15,6 +15,7 @@
 	"prettier": "@wordpress/prettier-config",
 	"main": "src/index.ts",
 	"scripts": {
+		"blobs": "node bin/normalize-blobs.js assets/blobs",
 		"build": "wp-scripts build --config webpack.config.cjs --blocks-manifest  --webpack-copy-php --source-path=./src/ --output-path=./build/",
 		"check-engines": "wp-scripts check-engines",
 		"packages-update": "wp-scripts packages-update",
@@ -55,10 +56,12 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-import-resolver-typescript": "^4.4.4",
 		"eslint-plugin-react-hooks": "^7.0.1",
+		"fast-xml-parser": "^5.5.9",
 		"globals": "^17.4.0",
 		"stylelint": "^17.5.0",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"stylelint-scss": "^7.0.0",
+		"svg-pathdata": "^9.0.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }

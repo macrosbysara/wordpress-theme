@@ -3,19 +3,31 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import block from './block.json';
 import './style.scss';
 import Edit from './edit';
+import { BlobKey, blobs } from '../_shared/blobs';
 
 registerBlockType( block.name, {
 	edit: Edit,
 	save: ( { attributes } ) => {
-		const { blobType, fillColor } = attributes;
-		const color = fillColor || 'var(--wp--preset--color--primary)';
-		const blockProps = useBlockProps.save( { style: {
-			'--fill-color': color,
-		} } );
-		const innerBlocksProps = useInnerBlocksProps.save( { className: 'blob-inner' } );
+		const { blobType, fillColor, blockId } = attributes;
+		const clipId = `blob-${ blockId }`;
+		const path = blobs[ blobType as BlobKey ].path;
+		const blockProps = useBlockProps.save();
+		const innerBlocksProps = useInnerBlocksProps.save( {
+			className: 'wp-block-mbs-blob-container-block__blob-inner',
+			style: { backgroundColor: fillColor },
+		} );
 		return (
 			<div { ...blockProps }>
-				<div { ...innerBlocksProps } />
+				<svg width="0" height="0" aria-hidden="true" focusable="false">
+					<defs>
+						<clipPath id={ clipId } clipPathUnits="objectBoundingBox">
+							<path d={ path } />
+						</clipPath>
+					</defs>
+				</svg>
+				<div className="wp-block-mbs-blob-container-block__clip" style={ { clipPath: `url(#${ clipId })`, aspectRatio: `${ blobs[ blobType ].aspectRatio }` } }>
+					<div { ...innerBlocksProps } />
+				</div>
 			</div>
 		);
 	},
