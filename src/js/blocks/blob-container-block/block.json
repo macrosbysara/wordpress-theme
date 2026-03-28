@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mbs/blob-container-block",
+	"version": "1.0.0",
+	"title": "Blob Container Block",
+	"category": "media",
+	"icon": "email",
+	"keywords": ["blob", "container", "cover"],
+	"description": "A blob container block for clipping content.",
+	"attributes": {
+		"blobType": {
+			"type": "string",
+			"enum": ["blob-1", "blob-2", "blob-3", "blob-4", "blob-5"],
+			"default": "blob-1"
+		},
+		"blockId": {
+			"type": "string"
+		},
+		"fillColor": {
+			"type": "string",
+			"default": "primary"
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": false,
+			"text": false
+		},
+		"dimensions": {
+			"aspectRatio": false,
+			"minHeight": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": false,
+			"blockGap": false
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

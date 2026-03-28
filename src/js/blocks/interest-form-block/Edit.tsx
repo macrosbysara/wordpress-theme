@@ -3,7 +3,7 @@ import { Fragment } from '@wordpress/element';
 
 import { selectOptions } from './consts';
 import BlockStyles from './BlockStyles';
-import parseSpacing from './_lib/parseSpacing';
+import parseSpacing from '../_shared/parseSpacing';
 
 export default function Edit( props ) {
 	const { style, borderRadius, inputBorder, buttonColor, buttonBackgroundColor, buttonBorder } = props.attributes;
