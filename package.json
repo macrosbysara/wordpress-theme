@@ -18,7 +18,6 @@
 	"prettier": "@wordpress/prettier-config",
 	"main": "src/index.ts",
 	"scripts": {
-		"blobs": "node bin/normalize-blobs.js assets/blobs",
 		"build": "wp-scripts build --config webpack.config.cjs --blocks-manifest  --webpack-copy-php --source-path=./src/ --output-path=./build/",
 		"check-engines": "wp-scripts check-engines",
 		"packages-update": "wp-scripts packages-update",
