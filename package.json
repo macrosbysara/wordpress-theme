@@ -6,6 +6,9 @@
 	"bugs": {
 		"url": "https://github.com/macrosbysara/wordpress-theme/issues"
 	},
+	"engines": {
+		"node": ">= 24"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/macrosbysara/wordpress-theme.git"

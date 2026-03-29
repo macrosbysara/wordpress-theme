@@ -1,6 +1,6 @@
 import { useSelect } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
-import { useMemo, useState, useEffect } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 
 export default function useColorPalettes() {
 	const baseColors = useSelect(
