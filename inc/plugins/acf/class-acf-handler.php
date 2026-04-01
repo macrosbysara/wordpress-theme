@@ -31,7 +31,7 @@ class ACF_Handler {
 	 * Constructor function that initializes the ACF Handler.
 	 */
 	public function __construct() {
-		if ( ! defined( 'ACF_PRO' ) || ! defined( 'ACF_VERSION' ) ) {
+		if (  ! defined( 'ACF_VERSION' ) ) {
 			return;
 		}
 
