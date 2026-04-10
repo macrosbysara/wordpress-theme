@@ -78,6 +78,17 @@ class Theme_Init {
 	/** Alter Post Types. */
 	public function alter_post_types() {
 		add_post_type_support( 'page', 'excerpt' );
+		$args = get_post_type_object( 'cc-post' );
+		$icon = get_theme_file_path( 'assets/cc-icon-white.svg' );
+		register_post_type(
+			'cc-post',
+			array_merge(
+				(array) $args,
+				array(
+					'menu_icon' => 'data:image/svg+xml;base64, ' . base64_encode( file_get_contents( $icon ) ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode, WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+				)
+			)
+		);
 	}
 
 
