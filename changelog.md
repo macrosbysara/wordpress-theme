@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0 - [March 28, 2026]
+
+- Added: New Consistency Club Post Type & Taxonomies
+
 ## 2.1.0 - [March 28, 2026]
 
 - Added: New Blob Blocks!
