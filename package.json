@@ -42,7 +42,7 @@
 		"bootstrap": "^5.3.8"
 	},
 	"devDependencies": {
-		"@eslint/compat": "^2.0.3",
+		"@eslint/compat": "^2.0.5",
 		"@eslint/eslintrc": "^3.3.5",
 		"@wordpress/block-editor": "^15.16.0",
 		"@wordpress/blocks": "^15.16.0",
@@ -59,7 +59,7 @@
 		"eslint-import-resolver-typescript": "^4.4.4",
 		"eslint-plugin-react-hooks": "^7.0.1",
 		"globals": "^17.4.0",
-		"stylelint": "^17.5.0",
+		"stylelint": "^17.6.0",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"stylelint-scss": "^7.0.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
