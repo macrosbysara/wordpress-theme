@@ -3,6 +3,7 @@
 ## 2.2.0 - [March 28, 2026]
 
 - Added: New Consistency Club Post Type & Taxonomies
+- Chore: Update packages
 
 ## 2.1.0 - [March 28, 2026]
 

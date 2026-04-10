@@ -4,18 +4,18 @@ A custom WordPress theme for Macros by Sara, designed for performance, accessibi
 
 ## Changelog
 
-See [changelog.md](./changelog.md) for release notes and version history.
+See [CHANGELOG.md](./CHANGELOG.md) for release notes and version history.
 
 ## Features
 
--   Modern CSS and JS build process
--   Custom fonts (Cormorant, Mulish)
+- Modern CSS and JS build process
+- Custom fonts (Cormorant, Mulish)
 
 ## Development
 
--   Source files are in the `src/` directory.
--   Built assets are output to the `build/` directory.
--   Customize theme settings in `theme.json`.
+- Source files are in the `src/` directory.
+- Built assets are output to the `build/` directory.
+- Customize theme settings in `theme.json`.
 
 ## License
 
