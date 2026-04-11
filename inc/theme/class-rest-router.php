@@ -5,7 +5,7 @@
  * @package MacrosBySara
  */
 
-namespace MacrosBySara;
+namespace MacrosBySara\Theme;
 
 use WP_REST_Controller;
 use WP_REST_Request;

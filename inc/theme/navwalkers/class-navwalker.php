@@ -16,7 +16,7 @@
  * @package MacrosBySara
  */
 
-namespace MacrosBySara;
+namespace MacrosBySara\Theme\Navwalkers;
 
 use stdClass;
 use Walker_Nav_Menu;
