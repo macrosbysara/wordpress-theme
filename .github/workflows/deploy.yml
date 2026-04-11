@@ -22,7 +22,7 @@ jobs:
     deploy-stg:
         name: Deploy to Staging
         if: github.ref == 'refs/heads/stg'
-        uses: macrosbysara/shared-github-actions/.github/workflows/deploy-theme.yml@1.2.1
+        uses: macrosbysara/shared-github-actions/.github/workflows/deploy-theme.yml@main
         with:
             REMOTE: staging6.macrosbysara.com
             theme_name: "macros-by-sara"
