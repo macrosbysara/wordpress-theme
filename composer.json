@@ -2,6 +2,11 @@
 	"name": "macros-by-sara/wordpress-theme",
 	"description": "a custom wordpress theme",
 	"type": "project",
+	"autoload": {
+		"classmap": [
+			"inc/"
+		]
+	},
 	"repositories": [
 		{
 			"type": "composer",

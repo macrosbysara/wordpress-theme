@@ -5,7 +5,13 @@
  * @package MacrosBySara
  */
 
-use MacrosBySara\Theme_Init;
+use MacrosBySara\Theme\Theme_Init;
 
-require_once get_stylesheet_directory() . '/inc/theme/class-theme-init.php';
-new Theme_Init();
+$autoloader = get_stylesheet_directory() . '/vendor/autoload.php';
+if ( file_exists( $autoloader ) ) {
+	require_once $autoloader;
+} else {
+	wp_die( 'Autoloader not found. Please run composer install.' );
+}
+$theme = new Theme_Init();
+add_action( 'after_setup_theme', array( $theme, 'bootstrap_theme' ) );

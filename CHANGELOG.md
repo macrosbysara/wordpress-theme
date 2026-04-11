@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0 - [April 11, 2026]
+
+- Breaking: Swap to autoloading classes
+- Added: PMPro handler
+
 ## 2.2.0 - [March 28, 2026]
 
 - Added: New Consistency Club Post Type & Taxonomies

@@ -7,28 +7,18 @@
  * @package MacrosBySara
  */
 
-namespace MacrosBySara;
+namespace MacrosBySara\Theme;
 
 /**
  * Class: Theme Init
  */
 class Theme_Init {
 	/**
-	 * Utils Loader
-	 *
-	 * @var Utils_Loader $loader
+	 * Bootstrap the theme by setting up supports and disabling comments.
 	 */
-	private Utils_Loader $loader;
-
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		require_once get_stylesheet_directory() . '/inc/theme/class-utils-loader.php';
-		$this->loader = new Utils_Loader();
-		$this->loader->load_files();
+	public function bootstrap_theme() {
 		$this->disable_discussion();
-		add_action( 'after_setup_theme', array( $this, 'configure_theme_support' ) );
+		$this->configure_theme_support();
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
@@ -91,7 +81,6 @@ class Theme_Init {
 		);
 	}
 
-
 	/**
 	 * Enqueue scripts and styles.
 	 */
@@ -107,7 +96,7 @@ class Theme_Init {
 			),
 		);
 		foreach ( $files as $handle => $paths ) {
-			$assets = require_once get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
+			$assets = require get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
 
 			$deps = $assets['dependencies'];
 			if ( 'bootstrap' !== $handle ) {

@@ -7,7 +7,7 @@
  * @package MacrosBySara
  */
 
-namespace MacrosBySara;
+namespace MacrosBySara\Theme;
 
 /**
  * Gutenberg Handler

@@ -16,6 +16,7 @@ jobs:
             REMOTE: "macrosbysara.com" # Remote folder to deploy to
             theme_name: "macros-by-sara"
             flags: "-azr --delete"
+            with_autoload: true
         secrets: inherit
 
     deploy-stg:
@@ -26,4 +27,5 @@ jobs:
             REMOTE: staging6.macrosbysara.com
             theme_name: "macros-by-sara"
             flags: "-azvr --delete"
+            with_autoload: true
         secrets: inherit
