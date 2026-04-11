@@ -39,9 +39,11 @@
 		"alignfull",
 		"alignwide",
 		"atts",
+		"autoloading",
 		"azvr",
 		"bloginfo",
 		"choctawnationofoklahoma",
+		"classmap",
 		"cpts",
 		"Linktree",
 		"macrosbysara",
@@ -70,6 +72,6 @@
 	"html.format.templating": true,
 	"phpSniffer.standard": "phpcs.xml.dist",
 	"scss.format.spaceAroundSelectorSeparator": true,
-	"stylelint.snippet": [ "css", "scss" ],
-	"stylelint.validate": [ "css", "scss" ]
+	"stylelint.snippet": ["css", "scss"],
+	"stylelint.validate": ["css", "scss"]
 }

@@ -7,7 +7,7 @@
  * @package MacrosBySara
  */
 
-namespace MacrosBySara;
+namespace MacrosBySara\Plugins;
 
 /**
  * ACF_Handler Class
