@@ -19,6 +19,8 @@ class Theme_Init {
 	public function bootstrap_theme() {
 		$this->disable_discussion();
 		$this->configure_theme_support();
+		$plugin_handler = new Plugin_Handler();
+		$plugin_handler->handle_plugins();
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );

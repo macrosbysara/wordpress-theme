@@ -1,6 +1,10 @@
 # Changelog
 
-## 3.0.0 - [April 11, 2026]
+## 3.0.1 - [April 11, 2026]
+
+- Fixed: Add plugin handling back into the theme init
+
+## 3.0.0
 
 - Breaking: Swap to autoloading classes
 - Added: PMPro handler
