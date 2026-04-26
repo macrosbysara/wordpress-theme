@@ -28,6 +28,8 @@
 		}
 	},
 	"require-dev": {
-		"wp-coding-standards/wpcs": "*"
+		"wp-coding-standards/wpcs": "*",
+		"php-stubs/wordpress-stubs": "*",
+		"php-stubs/acf-pro-stubs": "*"
 	}
 }
