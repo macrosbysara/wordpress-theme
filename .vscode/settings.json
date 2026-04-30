@@ -45,13 +45,15 @@
 		"choctawnationofoklahoma",
 		"classmap",
 		"cpts",
+		"kses",
 		"Linktree",
 		"macrosbysara",
 		"pmpro",
 		"remoteip",
 		"trackbacks",
 		"wght",
-		"wpcf"
+		"wpcf",
+		"wpdb"
 	],
 	"css.format.spaceAroundSelectorSeparator": true,
 	"editor.codeActionsOnSave": {
