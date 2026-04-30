@@ -7,6 +7,7 @@
 
 namespace MacrosBySara\Plugins;
 
+use stdClass;
 use WP_Query;
 
 /**
@@ -30,12 +31,12 @@ class PMPro_Handler {
 	/**
 	 * Constructor
 	 *
-	 * @param int[]  $consistency_club_levels An array of PMPro membership levels that grant access to the content.
 	 * @param string $cc_post_type_slug The slug of the custom post type to lock
+	 * @param int[]  $consistency_club_levels An array of PMPro membership levels that grant access to the content.
 	 */
-	public function __construct( array $consistency_club_levels = array(), string $cc_post_type_slug ) {
-		$this->consistency_club_levels = array_map( 'strval', $consistency_club_levels );
+	public function __construct( string $cc_post_type_slug, array $consistency_club_levels = array() ) {
 		$this->cc_post_type_slug       = $cc_post_type_slug;
+		$this->consistency_club_levels = array_map( 'strval', $consistency_club_levels );
 	}
 
 	/**
@@ -105,5 +106,32 @@ class PMPro_Handler {
 				exit;
 			}
 		}
+	}
+
+	/**
+	 * Edit visible member action links to prevent cancellation for certain levels.
+	 *
+	 * @param array  $links The original action links.
+	 * @param string $level The membership level ID.
+	 */
+	public function edit_membership_action_links( array $links, $level ): array {
+		$one_time_payment_levels = array( '3', '5' );
+		if ( in_array( $level, $one_time_payment_levels, true ) ) {
+			if ( isset( $links['renew'] ) ) {
+				unset( $links['renew'] );
+			}
+		}
+		$user_id = get_current_user_id();
+		if ( empty( $user_id ) ) {
+			return $links;
+		}
+		// if ( mbs_user_can_cancel( $user_id ) ) {
+		// return $links;
+		// }
+		$links['commitment'] = '<span>You signed a 3-month contract. If you need to cancel, you can discuss this with us directly.</span>';
+		if ( isset( $links['cancel'] ) ) {
+			unset( $links['cancel'] );
+		}
+		return $links;
 	}
 }
