@@ -19,6 +19,7 @@ class Theme_Init {
 	public function bootstrap_theme() {
 		$this->disable_discussion();
 		$this->configure_theme_support();
+		$this->configure_gutenberg_support();
 		$plugin_handler = new Plugin_Handler();
 		$plugin_handler->handle_plugins();
 		add_action( 'init', array( $this, 'alter_post_types' ) );
@@ -65,6 +66,16 @@ class Theme_Init {
 				'footer_menu'  => 'Footer Menu',
 			)
 		);
+	}
+
+	/**
+	 * Configure Gutenberg support by enqueuing block editor assets and adding theme supports for Gutenberg features.
+	 */
+	public function configure_gutenberg_support() {
+		$gutenberg_handler = new Gutenberg_Handler();
+		$gutenberg_handler->theme_supports();
+		add_action( 'enqueue_block_editor_assets', array( $gutenberg_handler, 'enqueue_block_assets' ) );
+		add_action( 'init', array( $gutenberg_handler, 'register_theme_blocks' ) );
 	}
 
 	/** Alter Post Types. */

@@ -13,16 +13,6 @@ namespace MacrosBySara\Theme;
  * Gutenberg Handler
  */
 class Gutenberg_Handler {
-
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
-		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
-		add_action( 'init', array( $this, 'register_theme_blocks' ) );
-	}
-
 	/**
 	 * Enqueue the block editor assets that control the layout of the Block Editor.
 	 */

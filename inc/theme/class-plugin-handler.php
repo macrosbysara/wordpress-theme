@@ -44,6 +44,5 @@ class Plugin_Handler {
 		$consistency_club_levels = array( 2, 3, 4, 5 ); // Define your PMPro membership levels here
 		$pmpro_handler           = new PMPro_Handler( 'cc-post', $consistency_club_levels );
 		$pmpro_handler->lock_down_cpt();
-		add_filter( 'pmpro_member_action_links', array( $pmpro_handler, 'edit_membership_action_links' ), 10, 2 );
 	}
 }
