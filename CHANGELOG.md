@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.0 - [April 12, 2026]
+
+- Added: PMPro_Handler to lock down CPTs and Queries for Consistency Club posts
+- Fixed: Added Gutenberg handling back into the theme
+
 ## 3.0.1 - [April 11, 2026]
 
 - Fixed: Add plugin handling back into the theme init
