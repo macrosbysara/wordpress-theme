@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1 - [May 5, 2026]
+
+- Fixed: Theme.json is reset to allow block overrides while still maintaining style defaults
+
 ## 3.1.0 - [April 12, 2026]
 
 - Added: PMPro_Handler to lock down CPTs and Queries for Consistency Club posts

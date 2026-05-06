@@ -240,65 +240,20 @@
 				"right": "calc(var(--wp--preset--spacing--lg) * .5)",
 				"top": "0"
 			},
-			"blockGap": "var:preset|spacing|none"
+			"blockGap": "var:preset|spacing|sm"
 		},
 		"typography": {
 			"fontFamily": "var:preset|font-family|body",
 			"fontSize": "var:preset|font-size|root",
 			"fontWeight": "400",
-			"fontStyle": "normal"
+			"fontStyle": "normal",
+			"lineHeight": "1.5"
 		},
 		"color": {
 			"text": "var:preset|color|primary"
 		},
+		"css": "text-wrap:pretty",
 		"blocks": {
-			"core/heading": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|headings"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var:preset|spacing|sm",
-						"top": "var:preset|spacing|none"
-					}
-				},
-				"color": {
-					"text": "var:preset|color|primary"
-				}
-			},
-			"core/list": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|root"
-				},
-				"color": {
-					"text": "var:preset|color|primary"
-				}
-			},
-			"core/list-item": {
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|root"
-				},
-				"color": {
-					"text": "var:preset|color|primary"
-				}
-			},
-			"core/paragraph": {
-				"color": {
-					"text": "var:preset|color|primary"
-				},
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|root"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var:preset|spacing|base",
-						"top": "var:preset|spacing|none"
-					}
-				}
-			},
 			"core/cover": {
 				"spacing": {
 					"padding": {
@@ -453,15 +408,23 @@
 					"text": "var:preset|color|primary"
 				},
 				"typography": {
-					"fontFamily": "var:preset|font-family|headings"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var:preset|spacing|sm",
-						"top": "0"
-					}
+					"fontFamily": "var:preset|font-family|headings",
+					"lineHeight": "calc(3ex + 4px)"
 				},
 				"css": "text-wrap:pretty"
+			},
+			"link": {
+				"color": { "text": "var:preset|color|primary-light" },
+
+				":link": {
+					"color": { "text": "var:preset|color|primary-light" }
+				},
+				":visited": {
+					"color": { "text": "var:preset|color|primary-light" }
+				},
+				":hover": {
+					"color": { "text": "var:preset|color|primary" }
+				}
 			}
 		}
 	}
