@@ -98,9 +98,8 @@ class Theme_Init {
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts(): void {
-		$files = array(
+		$files            = array(
 			'bootstrap' => array(
-				'js'  => 'vendors/bootstrap',
 				'css' => 'vendors/bootstrap',
 			),
 			'global'    => array(
@@ -108,29 +107,29 @@ class Theme_Init {
 				'css' => 'global',
 			),
 		);
-		foreach ( $files as $handle => $paths ) {
-			$assets = require get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
-
-			$deps = $assets['dependencies'];
-			if ( 'bootstrap' !== $handle ) {
-				// Ensure assets load after bootstrap for proper overrides
-				$deps = array_merge( $deps, array( 'bootstrap' ) );
-			}
-			wp_enqueue_script(
-				$handle,
-				get_stylesheet_directory_uri() . "/build/{$paths['js']}.js",
-				$deps,
-				$assets['version'],
-				array( 'strategy' => 'defer' )
-			);
+		$bootstrap_assets = require get_stylesheet_directory() . '/build/vendors/bootstrap.asset.php';
 			wp_enqueue_style(
-				$handle,
-				get_stylesheet_directory_uri() . "/build/{$paths['css']}.css",
-				$deps,
-				$assets['version'],
+				'bootstrap',
+				get_stylesheet_directory_uri() . '/build/vendors/bootstrap.css',
+				$bootstrap_assets['dependencies'],
+				$bootstrap_assets['version']
 			);
-		}
+		$site_assets = require get_stylesheet_directory() . '/build/global.asset.php';
+		wp_enqueue_script(
+			'global',
+			get_stylesheet_directory_uri() . '/build/global.js',
+			$site_assets['dependencies'],
+			$site_assets['version'],
+			array( 'strategy' => 'defer' )
+		);
+		wp_enqueue_style(
+			'global',
+			get_stylesheet_directory_uri() . '/build/global.css',
+			is_admin() ? $site_assets['dependencies'] : array( ...$site_assets['dependencies'], 'bootstrap' ),
+			$site_assets['version'],
+		);
 	}
+
 
 	/**
 	 * Handle speculative loading

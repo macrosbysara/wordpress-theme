@@ -12,7 +12,7 @@ module.exports = {
 		entry: () => ( {
 			...defaultConfig.entry(),
 			global: `./src/index.ts`,
-			'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
+			'vendors/bootstrap': `./src/styles/vendors/bootstrap.scss`,
 			'admin/editor': `./src/styles/editor.scss`,
 			...addEntries( appNames, 'pages' ),
 			...addEntries( styleSheets, 'styles' ),
@@ -48,8 +48,7 @@ function addEntries( array, type ) {
 	const typeOutput = {
 		styles: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
-			path: ( asset ) =>
-				`./src/styles/pages/${ asset }.scss`,
+			path: ( asset ) => `./src/styles/pages/${ asset }.scss`,
 		},
 		pages: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
