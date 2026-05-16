@@ -46,6 +46,7 @@
 		"classmap",
 		"cpts",
 		"kses",
+		"lightbox",
 		"Linktree",
 		"macrosbysara",
 		"pmpro",
@@ -75,6 +76,6 @@
 	"html.format.templating": true,
 	"phpSniffer.standard": "phpcs.xml.dist",
 	"scss.format.spaceAroundSelectorSeparator": true,
-	"stylelint.snippet": ["css", "scss"],
-	"stylelint.validate": ["css", "scss"]
+	"stylelint.snippet": [ "css", "scss" ],
+	"stylelint.validate": [ "css", "scss" ]
 }

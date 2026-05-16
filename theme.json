@@ -13,11 +13,6 @@
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
 				{
-					"name": "None",
-					"size": "0",
-					"slug": "none"
-				},
-				{
 					"name": "Extra Small",
 					"size": ".25rem",
 					"slug": "xs"
@@ -257,10 +252,10 @@
 			"core/cover": {
 				"spacing": {
 					"padding": {
-						"top": "var:preset|spacing|none",
-						"right": "var:preset|spacing|none",
-						"bottom": "var:preset|spacing|none",
-						"left": "var:preset|spacing|none"
+						"top": "0",
+						"right": "0",
+						"bottom": "0",
+						"left": "0"
 					},
 					"blockGap": "var:preset|spacing|base"
 				}
@@ -271,28 +266,6 @@
 				}
 			},
 			"core/button": {
-				"border": {
-					"radius": "50rem",
-					"width": "2px",
-					"color": "var:preset|color|primary"
-				},
-				"spacing": {
-					"padding": {
-						"top": "var:preset|spacing|base",
-						"right": "var:preset|spacing|lg",
-						"bottom": "var:preset|spacing|base",
-						"left": "var:preset|spacing|lg"
-					},
-					"blockGap": "var:preset|spacing|base"
-				},
-				"typography": {
-					"fontFamily": "var:preset|font-family|body",
-					"fontSize": "var:preset|font-size|root"
-				},
-				"color": {
-					"background": "var:preset|color|primary",
-					"text": "var:preset|color|white"
-				},
 				"variations": {
 					"outline": {
 						"border": {
@@ -409,6 +382,7 @@
 				},
 				"typography": {
 					"fontFamily": "var:preset|font-family|headings",
+					"fontWeight": "700",
 					"lineHeight": "calc(3ex + 4px)"
 				},
 				"css": "text-wrap:pretty"
@@ -424,6 +398,44 @@
 				},
 				":hover": {
 					"color": { "text": "var:preset|color|primary" }
+				}
+			},
+			"button": {
+				"border": {
+					"radius": "50rem",
+					"width": "2px",
+					"color": "var:preset|color|primary"
+				},
+				"spacing": {
+					"padding": {
+						"top": "var:preset|spacing|base",
+						"right": "var:preset|spacing|lg",
+						"bottom": "var:preset|spacing|base",
+						"left": "var:preset|spacing|lg"
+					},
+					"blockGap": "var:preset|spacing|base"
+				},
+				"typography": {
+					"fontFamily": "var:preset|font-family|body",
+					"fontSize": "var:preset|font-size|root"
+				},
+				"color": {
+					"background": "var:preset|color|primary",
+					"text": "var:preset|color|white"
+				}
+			},
+			"select": {
+				"border": {
+					"radius": "50rem",
+					"width": "2px",
+					"color": "var:preset|color|primary"
+				}
+			},
+			"textInput": {
+				"border": {
+					"radius": "50rem",
+					"width": "2px",
+					"color": "var:preset|color|primary"
 				}
 			}
 		}
