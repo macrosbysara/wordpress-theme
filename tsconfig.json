@@ -10,13 +10,20 @@
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"noImplicitAny": false,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"typeRoots": [ "./node_modules/@types", "./src/**/types" ]
+		"paths": {
+			"@styles/*": [ "./src/styles/*" ],
+			"@shared/*": [ "./src/js/blocks/_shared/*" ]
+		}
 	},
-	"include": [ "./src/js/**/*.ts", "./src/js/**/*.tsx" ],
+	"include": [
+		"./src/js/**/*.ts",
+		"./src/js/**/*.tsx",
+		"src/types/style.d.ts"
+	],
 	"exclude": [ "node_modules" ]
 }

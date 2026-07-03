@@ -6,7 +6,14 @@ import BlockStyles from './BlockStyles';
 import parseSpacing from '../_shared/parseSpacing';
 
 export default function Edit( props ) {
-	const { style, borderRadius, inputBorder, buttonColor, buttonBackgroundColor, buttonBorder } = props.attributes;
+	const {
+		style,
+		borderRadius,
+		inputBorder,
+		buttonColor,
+		buttonBackgroundColor,
+		buttonBorder,
+	} = props.attributes;
 	const blockGap = parseSpacing( style?.spacing || {} );
 	const blockProps = useBlockProps( {
 		disabled: true,
@@ -73,12 +80,11 @@ export default function Edit( props ) {
 						aria-label="Interest"
 						autoComplete="section-interest"
 					>
-						<option value="" selected>I&apos;m interested in&hellip;</option>
+						<option value="" selected>
+							I&apos;m interested in&hellip;
+						</option>
 						{ selectOptions.map( ( option ) => (
-							<option
-								key={ option.value }
-								value={ option.value }
-							>
+							<option key={ option.value } value={ option.value }>
 								{ option.name }
 							</option>
 						) ) }
@@ -87,7 +93,13 @@ export default function Edit( props ) {
 				</div>
 
 				<div className="col-12">
-					<button type="submit" disabled={ true } className="btn btn-primary">Submit</button>
+					<button
+						type="submit"
+						disabled={ true }
+						className="btn btn-primary"
+					>
+						Submit
+					</button>
 				</div>
 			</form>
 		</Fragment>

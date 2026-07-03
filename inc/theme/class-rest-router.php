@@ -21,8 +21,6 @@ class Rest_Router extends WP_REST_Controller {
 	 */
 	public function __construct() {
 		$this->namespace = 'mbs/v1';
-		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_interest_form_script' ), 100 );
 	}
 
 	/**
@@ -102,38 +100,12 @@ class Rest_Router extends WP_REST_Controller {
 	}
 
 	/**
-	 * Enqueue interest form script with localized REST API data.
-	 */
-	public function enqueue_interest_form_script() {
-		wp_localize_script(
-			'global',
-			'mbsRestApi',
-			array(
-				'root'  => esc_url_raw( rest_url() . $this->namespace ),
-				'nonce' => wp_create_nonce( 'wp_rest' ),
-			)
-		);
-		wp_enqueue_script(
-			'cloudflare',
-			'https://challenges.cloudflare.com/turnstile/v0/api.js',
-			array(),
-			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-			array(
-				'strategy' => 'async',
-			)
-		);
-	}
-
-	/**
 	 * Allow public access to the endpoint.
 	 *
 	 * @param WP_REST_Request $request The REST request.
 	 * @return bool
 	 */
 	public function allow_public_access( WP_REST_Request $request ): bool {
-		if ( ! defined( 'CF_TURNSTILE_SECRET' ) || empty( CF_TURNSTILE_SECRET ) ) {
-			return false;
-		}
 		$nonce   = null;
 		$headers = $request->get_headers();
 		if ( isset( $headers['x_wp_nonce'] ) ) {
@@ -143,12 +115,7 @@ class Rest_Router extends WP_REST_Controller {
 		if ( ! $verified ) {
 			return false;
 		}
-		if ( ! isset( $_POST['cf-turnstile-response'] ) ) {
-			return false;
-		}
-		return $this->cloudflare_validation(
-			sanitize_text_field( $_POST['cf-turnstile-response'] ?? '' )
-		);
+		return true;
 	}
 
 

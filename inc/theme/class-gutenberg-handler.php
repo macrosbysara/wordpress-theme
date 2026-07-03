@@ -44,6 +44,30 @@ class Gutenberg_Handler {
 	}
 
 	/**
+	 * Enqueue frontend block assets
+	 */
+	public function enqueue_frontend_block_assets() {
+		wp_add_inline_script(
+			'mbs-interest-form-view-script',
+			'window.mbsRestApi = ' . wp_json_encode(
+				array(
+					'nonce' => wp_create_nonce( 'wp_rest' ),
+					'root'  => esc_url_raw( rest_url( 'mbs/v1' ) ),
+				)
+			) . ';'
+		);
+		wp_enqueue_script(
+			'cloudflare',
+			'https://challenges.cloudflare.com/turnstile/v0/api.js',
+			array(),
+			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+			array(
+				'strategy' => 'async',
+			)
+		);
+	}
+
+	/**
 	 * Add theme supports for Gutenberg features
 	 */
 	public function theme_supports() {

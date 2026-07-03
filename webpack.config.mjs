@@ -1,36 +1,61 @@
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
-const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
+import path from 'path';
+import { fileURLToPath } from 'url';
+import config from '@wordpress/scripts/config/webpack.config.js';
 
 const appNames = [];
 const blockEditor = [ 'editDefaultBlocks' ];
-// const [ defaultConfig, moduleConfig ] = configs;
 const styleSheets = []; // for scss only
 
-module.exports = {
-	...defaultConfig,
-	...{
-		entry: () => ( {
-			...defaultConfig.entry(),
-			global: `./src/index.ts`,
-			'vendors/bootstrap': `./src/js/vendors/bootstrap.js`,
-			'admin/editor': `./src/styles/editor.scss`,
-			...addEntries( appNames, 'pages' ),
-			...addEntries( styleSheets, 'styles' ),
-			...addEntries( blockEditor, 'admin' ),
-		} ),
+const __filename = fileURLToPath( import.meta.url );
+const __dirname = path.dirname( __filename );
 
-		output: {
-			path: __dirname + `./build`,
-			filename: `[name].js`,
+const configs = Array.isArray( config ) ? config : [ config ];
+
+const addAlias = ( webpackConfig ) => ( {
+	...webpackConfig,
+	resolve: {
+		...webpackConfig.resolve,
+		alias: {
+			...webpackConfig.resolve?.alias,
+			'@styles': path.resolve( __dirname, './src/styles' ),
+			'@shared': path.resolve( __dirname, './src/js/blocks/_shared' ),
 		},
-		plugins: [
-			...defaultConfig?.plugins,
-			new RemoveEmptyScriptsPlugin( {
-				stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
-			} ),
-		],
 	},
+} );
+
+const addEditorEntry = ( webpackConfig ) => {
+	const isModuleBuild = webpackConfig.output?.module;
+
+	if ( isModuleBuild ) {
+		return webpackConfig;
+	}
+
+	const originalEntry = webpackConfig.entry;
+
+	return {
+		...webpackConfig,
+		entry: async () => {
+			const entries =
+				typeof originalEntry === 'function'
+					? await originalEntry()
+					: originalEntry;
+
+			return {
+				...entries,
+				global: path.resolve( __dirname, `./src/index.ts` ),
+				'admin/editor': path.resolve(
+					__dirname,
+					`./src/styles/editor.scss`
+				),
+				...addEntries( appNames, 'pages' ),
+				...addEntries( styleSheets, 'styles' ),
+				...addEntries( blockEditor, 'admin' ),
+			};
+		},
+	};
 };
+
+export default configs.map( addAlias ).map( addEditorEntry );
 
 /**
  * Helper function to add entries to the entries object. It takes an array of strings in either kebab-case or snake_case and returns an object with the key as the entry name and the value as the path to the entry file.
@@ -49,15 +74,17 @@ function addEntries( array, type ) {
 		styles: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
 			path: ( asset ) =>
-				`./src/styles/pages/${ asset }.scss`,
+				path.resolve( __dirname, `./src/styles/pages/${ asset }.scss` ),
 		},
 		pages: {
 			outputDir: ( assetOutput ) => `pages/${ assetOutput }`,
-			path: ( asset ) => `./src/js/${ asset }/index.ts`,
+			path: ( asset ) =>
+				path.resolve( __dirname, `./src/js/${ asset }/index.ts` ),
 		},
 		admin: {
 			outputDir: ( assetOutput ) => `admin/${ assetOutput }`,
-			path: ( asset ) => `./src/js/gutenberg/${ asset }.ts`,
+			path: ( asset ) =>
+				path.resolve( __dirname, `./src/js/gutenberg/${ asset }.ts` ),
 		},
 	};
 	array.forEach( ( asset ) => {

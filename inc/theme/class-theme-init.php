@@ -22,12 +22,14 @@ class Theme_Init {
 		$this->configure_gutenberg_support();
 		$plugin_handler = new Plugin_Handler();
 		$plugin_handler->handle_plugins();
+		$router = new Rest_Router();
+		add_action( 'rest_api_init', array( $router, 'register_routes' ) );
 		add_action( 'init', array( $this, 'alter_post_types' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'wp_speculation_rules_configuration', array( $this, 'handle_speculative_loading' ) );
 	}
 
-	/** Remove comments, pings and trackbacks support from posts types. */
+	/** Remove comments and pings support from posts types. */
 	private function disable_discussion() {
 		// Close comments on the front-end
 		add_filter( 'comments_open', '__return_false', 20, 2 );
@@ -39,19 +41,13 @@ class Theme_Init {
 		// Remove comments page in menu.
 		add_action(
 			'admin_menu',
-			function () {
-				remove_menu_page( 'edit-comments.php' );
-			}
+			fn() =>  remove_menu_page( 'edit-comments.php' )
 		);
 
 		// Remove comments links from admin bar.
 		add_action(
 			'init',
-			function () {
-				if ( is_admin_bar_showing() ) {
-					remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
-				}
-			}
+			fn() => is_admin_bar_showing() && remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 )
 		);
 	}
 
@@ -76,6 +72,7 @@ class Theme_Init {
 		$gutenberg_handler->theme_supports();
 		add_action( 'enqueue_block_editor_assets', array( $gutenberg_handler, 'enqueue_block_assets' ) );
 		add_action( 'init', array( $gutenberg_handler, 'register_theme_blocks' ) );
+		add_action( 'wp_enqueue_scripts', array( $gutenberg_handler, 'enqueue_frontend_block_assets' ) );
 	}
 
 	/** Alter Post Types. */
@@ -98,9 +95,8 @@ class Theme_Init {
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts(): void {
-		$files = array(
+		$files       = array(
 			'bootstrap' => array(
-				'js'  => 'vendors/bootstrap',
 				'css' => 'vendors/bootstrap',
 			),
 			'global'    => array(
@@ -108,29 +104,22 @@ class Theme_Init {
 				'css' => 'global',
 			),
 		);
-		foreach ( $files as $handle => $paths ) {
-			$assets = require get_stylesheet_directory() . "/build/{$paths['js']}.asset.php";
-
-			$deps = $assets['dependencies'];
-			if ( 'bootstrap' !== $handle ) {
-				// Ensure assets load after bootstrap for proper overrides
-				$deps = array_merge( $deps, array( 'bootstrap' ) );
-			}
-			wp_enqueue_script(
-				$handle,
-				get_stylesheet_directory_uri() . "/build/{$paths['js']}.js",
-				$deps,
-				$assets['version'],
-				array( 'strategy' => 'defer' )
-			);
-			wp_enqueue_style(
-				$handle,
-				get_stylesheet_directory_uri() . "/build/{$paths['css']}.css",
-				$deps,
-				$assets['version'],
-			);
-		}
+		$site_assets = require get_stylesheet_directory() . '/build/global.asset.php';
+		wp_enqueue_script(
+			'global',
+			get_stylesheet_directory_uri() . '/build/global.js',
+			$site_assets['dependencies'],
+			$site_assets['version'],
+			array( 'strategy' => 'defer' )
+		);
+		wp_enqueue_style(
+			'global',
+			get_stylesheet_directory_uri() . '/build/global.css',
+			$site_assets['dependencies'],
+			$site_assets['version'],
+		);
 	}
+
 
 	/**
 	 * Handle speculative loading
