@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.2.0 - [May 15, 2026]
+## 3.2.0 - [July 3, 2026]
 
 -   Added: new styles are defined in `theme.json`
 -   Updated: npm packages are bumped to latest versions (now uses new wp-eslint!)

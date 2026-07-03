@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "es6",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": [ "dom", "dom.iterable", "esnext" ],
 		"allowJs": true,
 		"checkJs": true,
 		"skipLibCheck": true,
@@ -15,8 +15,15 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"typeRoots": ["./node_modules/@types", "./src/**/types"]
+		"paths": {
+			"@styles/*": [ "./src/styles/*" ],
+			"@shared/*": [ "./src/js/blocks/_shared/*" ]
+		}
 	},
-	"include": ["./src/js/**/*.ts", "./src/js/**/*.tsx"],
-	"exclude": ["node_modules"]
+	"include": [
+		"./src/js/**/*.ts",
+		"./src/js/**/*.tsx",
+		"src/types/style.d.ts"
+	],
+	"exclude": [ "node_modules" ]
 }

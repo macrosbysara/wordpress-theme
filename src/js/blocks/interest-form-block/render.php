@@ -37,8 +37,11 @@ $button_border           = $attributes['buttonBorder'] ?? array(
 	'width' => '1px',
 );
 $block_gap               = $attributes['style']['spacing']['blockGap'] ?? '1rem';
-$style_arr               = array(
-	'--gap'                     => $block_gap,
+$parsed_block_gap        = str_replace( '|', '--', $block_gap );
+$parsed_block_gap        = substr( $parsed_block_gap, strpos( $parsed_block_gap, ':' ) + 1 );
+
+$style_arr = array(
+	'--gap'                     => 'var(--wp--' . $parsed_block_gap . ')',
 	'--border-radius'           => $border_radius,
 	'--input-border-color'      => $input_border['color'],
 	'--input-border-width'      => $input_border['width'],
