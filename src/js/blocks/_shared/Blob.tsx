@@ -104,7 +104,7 @@ const blobs = {
 	),
 };
 export default function Blob( props ) {
-	const { blobType, fill, ...blockProps } = props;
+	const { blobType } = props;
 	if ( ! blobs[ blobType ] ) {
 		return null;
 	}
